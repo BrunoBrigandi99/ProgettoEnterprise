@@ -1,0 +1,17 @@
+body{
+  text-align: center;
+  justify-content: center;
+  margin: 20%;
+}
+
+h1{
+  font-weight: bold;
+  font-size: 1cm;
+}
+
+p {
+  color: black;
+  font-family: Arial, Sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}

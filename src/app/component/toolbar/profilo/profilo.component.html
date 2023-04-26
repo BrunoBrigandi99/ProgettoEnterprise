@@ -1,0 +1,35 @@
+<body ng-app="myApp">
+  <div ng-controller="MyController" layout="column" layout-align="center center" ng-cloak>
+
+    <!-- Visualizza il nome utente -->
+    <mat-card>
+      <mat-card-title>
+        <span>Nome Utente: </span>
+          <span class="md-headline">{{ username }}</span>
+      </mat-card-title>
+    </mat-card>
+
+    <!-- Visualizza il nome e il cognome -->
+    <mat-card>
+      <mat-card-title>
+          <span>Nome: </span>
+          <span class="md-headline">{{ firstName }}</span> <br>
+          <span>Cognome: </span>
+          <span class="md-headline">{{ lastName }}</span> <br>
+          <span>Email: </span>
+          <span class="md-subhead">{{ email }}</span>
+      </mat-card-title>
+    </mat-card>
+
+    <!-- Visualizza l'immagine del profilo -->
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>
+            <span class="md-headline">Foto del profilo</span>
+        </mat-card-title>
+          <img src="{{ profileImageUrl }}" alt="Foto del profilo" />
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</body>

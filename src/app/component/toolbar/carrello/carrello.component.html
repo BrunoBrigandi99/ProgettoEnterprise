@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Carrello</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <!-- Header della pagina -->
+    <div id="header">
+      <h1>Il tuo carrello</h1>
+    </div>
+
+    <!-- Lista dei prodotti nel carrello -->
+    <div id="cart-items">
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/100x100.png" alt="Prodotto 1">
+        <div>
+          <h3>Prodotto 1</h3>
+          <p>Prezzo: €10</p>
+          <button>Elimina</button>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/100x100.png" alt="Prodotto 2">
+        <div>
+          <h3>Prodotto 2</h3>
+          <p>Prezzo: €20</p>
+          <button>Elimina</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pulsante per effettuare il checkout -->
+    <div id="checkout">
+      <p>Totale: €30</p>
+      <button routerLink="" [routerLinkActive]="'active'">Effettua il checkout</button>
+    </div>
+  </body>
+</html>

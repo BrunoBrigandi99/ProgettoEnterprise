@@ -1,0 +1,106 @@
+<!-- HTML per visualizzare i prodotti -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Prodotti in evidenza</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="4" rowHeight="350px" gutterSize="20px">
+      <mat-grid-tile *ngFor="let product of products">
+        <mat-card>
+          <img mat-card-image src="{{product.imageUrl}}">
+          <mat-card-content>
+            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
+            <p>{{product.description}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- Aggiungi il prodotto al carrello passando l'ID del prodotto come argomento alla funzione 'addProductToCart' -->
+            <button mat-button color="primary" onclick="addProductToCart({{product.id}})">Aggiungi al carrello</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+<!-- HTML per visualizzare il carrello -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Carrello</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ul id="cartItems"></ul>
+    <p id="cartTotal"></p>
+  </mat-card-content>
+</mat-card>
+
+<!-- JavaScript per gestire il carrello -->
+<script>
+  // Oggetto che rappresenta il carrello
+  let cart = {
+    items: [], // array vuoto di prodotti
+    total: 0 // totale inizializzato a 0
+  };
+
+  // Funzione per aggiungere un prodotto al carrello
+  function addProductToCart(productId) {
+    // Trova il prodotto corrispondente all'ID
+    let product = products.find(p => p.id === productId);
+
+    // Aggiungi il prodotto all'array del carrello
+    cart.items.push(product);
+
+    // Aggiorna il totale del carrello
+    cart.total += product.price;
+
+    // Aggiorna la visualizzazione del carrello
+    updateCartDisplay();
+  }
+
+  // Funzione per aggiornare la visualizzazione del carrello
+  function updateCartDisplay() {
+    // Se il carrello è vuoto, nascondi il contenitore del carrello
+    if (cart.items.length === 0) {
+      document.querySelector('#cartItems').style.display = 'none';
+      document.querySelector('#cartTotal').style.display = 'none';
+      return;
+    }
+
+    // Altrimenti, mostra il contenitore del carrello e svuota la lista dei prodotti
+    document.querySelector('#cartItems').style.display = 'block';
+    document.querySelector('#cartTotal').style.display = 'block';
+    document.querySelector('#cartItems').innerHTML = '';
+
+    // Itera su ciascun prodotto nel carrello
+    cart.items.forEach(product => {
+      // Crea un elemento di lista per il prodotto
+      let listItem = document.createElement('li');
+      listItem.innerHTML = `
+        <span>${product.title} - ${product.price} €</span>
+        <button onclick="removeProductFromCart(${product.id})">Rimuovi</button>
+      `;
+
+      // Aggiungi l'elemento di lista alla lista dei prodotti nel carrello
+      document.querySelector('#cartItems').appendChild(listItem);
+    });
+
+    // Aggiorna il totale del carrello
+    document.querySelector('#cartTotal').textContent = `Totale: ${cart.total} €`;
+  }
+
+  // Funzione per rimuovere un prodotto dal carrello
+  function removeProductFromCart(productId) {
+    // Trova l'indice del prodotto corrispondente all'ID
+    let indexToRemove = cart.items.findIndex(p => p.id === productId);
+
+    // Rimuovi il prodotto dall'array del carrello
+    cart.items.splice(indexToRemove, 1);
+
+    // Aggiorna il totale del carrello
+    cart.total -= product.price;
+
+    // Aggiorna la visualizzazione del carrello
+    updateCartDisplay();
+  }
+</script>
+

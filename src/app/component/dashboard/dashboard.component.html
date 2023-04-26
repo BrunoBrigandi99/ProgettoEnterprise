@@ -1,0 +1,64 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <!--<button id="vinted" mat-button routerLink="home" [routerLinkActive]="'active'">Vinted</button>-->
+    <button mat-button routerLink="home" [routerLinkActive]="'active'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"></button>
+    <span class="spacer"></span>
+    <mat-form-field>
+      <input matInput placeholder="Cerca articoli">
+    </mat-form-field>
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="profilo" [routerLinkActive]="'active'">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Profilo</span>
+      </button>
+      <button mat-menu-item routerLink="home" [routerLinkActive]="'active'">
+        <mat-icon>logout</mat-icon>
+        <span>Esci</span>
+      </button>
+    </mat-menu>
+    <button mat-icon-button routerLink="carrello" [routerLinkActive]="'active'">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Categorie</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list style="display: flex;">
+      <mat-list-item role="listitem" routerLink="abbigliamento" [routerLinkActive]="'active'">Abbigliamento</mat-list-item>
+      <mat-list-item role="listitem" routerLink="scarpe" [routerLinkActive]="'active'">Scarpe</mat-list-item>
+      <mat-list-item role="listitem" routerLink="accessori" [routerLinkActive]="'active'">Accessori</mat-list-item>
+      <mat-list-item role="listitem" routerLink="elettronica" [routerLinkActive]="'active'">Elettronica</mat-list-item>
+      <mat-list-item role="listitem" routerLink="libri" [routerLinkActive]="'active'">Libri</mat-list-item>
+      <mat-list-item role="listitem" routerLink="sport" [routerLinkActive]="'active'">Sport</mat-list-item>
+      <mat-list-item role="listitem" routerLink="casa" [routerLinkActive]="'active'">Casa</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+
+</mat-card>
+
+<footer>
+  <mat-card style="background-color: grey;">
+    <mat-card-content>
+      <mat-list style="display: flex;">
+        <mat-list-item role="listitem" routerLink="chi-siamo" [routerLinkActive]="'active'">Chi siamo</mat-list-item>
+        <mat-list-item role="listitem" routerLink="privacy" [routerLinkActive]="'active'">Privacy</mat-list-item>
+        <mat-list-item role="listitem" routerLink="assistenza" [routerLinkActive]="'active'">Assistenza</mat-list-item>
+        <mat-list-item role="listitem" routerLink="come-funziona" [routerLinkActive]="'active'">Come Funziona</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</footer>
