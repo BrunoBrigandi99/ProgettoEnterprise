@@ -2,7 +2,7 @@
 <mat-toolbar>
   <!--LOGO E BARRA DI RICERCA CON BOTTONE-->
   <mat-toolbar-row>
-    <button mat-button routerLink="home"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"></button>
+    <button mat-button routerLink="home" style="border-radius: 5px;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"></button>
     <span class="spacer"></span>
     <mat-form-field>
       <input matInput placeholder="Cerca articoli">
@@ -12,28 +12,40 @@
     </button>
 
     <!--BOTTONE VENDI-->
-    <button mat-menu-item routerLink="aggiungi-annuncio">
+    <button mat-menu-item routerLink="aggiungi-annuncio" style="border-radius: 5px;">
       Vendi
     </button>
 
-    <!--BOTTONE PROFILO-->
+    <!--MESSAGGISTICA-->
+    <!--usare matBadge per prendere in modo dinamico il numero delle notifiche-->
+
+    <button mat-icon-button *ngIf="badgeValue > 0" (click)="azzeraBadge()" routerLink="messaggistica">
+      <mat-icon matBadge="{{badgeValue}}" matBadgeColor="warn">email</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="badgeValue == 0" routerLink="messaggistica">
+      <mat-icon>email</mat-icon>
+    </button>
+
+
+    <!--MENU PROFILO-->
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="profilo">
+      <button class="Bprofilo" mat-menu-item routerLink="profilo">
         <mat-icon>manage_accounts</mat-icon>
         <span>Profilo</span>
       </button>
-      <button mat-menu-item routerLink="accedi">
+      <button class="Bprofilo" mat-menu-item routerLink="accedi">
         <mat-icon>manage_accounts</mat-icon>
         <span>Accedi</span>
       </button>
-      <button mat-menu-item routerLink="registrati">
+      <button class="Bprofilo" mat-menu-item routerLink="registrati">
         <mat-icon>manage_accounts</mat-icon>
         <span>Registrati</span>
       </button>
-      <button mat-menu-item routerLink="home">
+      <button class="Bprofilo" mat-menu-item routerLink="home">
         <mat-icon>logout</mat-icon>
         <span>Esci</span>
       </button>

@@ -13,4 +13,20 @@ export class DashboardComponent{
     this.hidden = !this.hidden;
 
   }
+
+  badgeValue: number = 5;
+
+  aumentaBadge(){
+    this.badgeValue++;
+  }
+
+  diminuisciBadge(){
+    if(this.badgeValue > 0){
+      this.badgeValue--;
+    }
+  }
+
+  azzeraBadge(){
+    this.badgeValue = 0;
+  }
 }

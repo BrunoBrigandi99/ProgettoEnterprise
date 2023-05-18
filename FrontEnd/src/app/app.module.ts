@@ -9,7 +9,6 @@ import { PagAnnuncioComponent } from './component/pag-annuncio/pag-annuncio.comp
 import { AbbigliamentoComponent } from './component/topper/abbigliamento/abbigliamento.component';
 import { ChiSiamoComponent } from './component/footer/chi-siamo/chi-siamo.component';
 import { PrivacyComponent } from './component/footer/privacy/privacy.component';
-import { AssistenzaComponent } from './component/footer/assistenza/assistenza.component';
 import { ComeFunzionaComponent } from './component/footer/come-funziona/come-funziona.component';
 import { ScarpeComponent } from './component/topper/scarpe/scarpe.component';
 import { AccessoriComponent } from './component/topper/accessori/accessori.component';
@@ -19,6 +18,10 @@ import { SportComponent } from './component/topper/sport/sport.component';
 import { CasaComponent } from './component/topper/casa/casa.component';
 import { ProfiloComponent } from './component/toolbar/profilo/profilo.component';
 import { CarrelloComponent } from './component/toolbar/carrello/carrello.component';
+import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
+import { AccediComponent } from './component/toolbar/accedi/accedi.component';
+import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
+import { MessaggisticaComponent } from './component/toolbar/messaggistica/messaggistica.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,9 +38,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
-import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
-import { AccediComponent } from './component/toolbar/accedi/accedi.component';
-import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
+
 
 
 
@@ -52,7 +53,6 @@ import { RegistratiComponent } from './component/toolbar/registrati/registrati.c
     AbbigliamentoComponent,
     ChiSiamoComponent,
     PrivacyComponent,
-    AssistenzaComponent,
     ComeFunzionaComponent,
     ScarpeComponent,
     AccessoriComponent,
@@ -65,6 +65,7 @@ import { RegistratiComponent } from './component/toolbar/registrati/registrati.c
     AggiungiAnnuncioComponent,
     AccediComponent,
     RegistratiComponent,
+    MessaggisticaComponent,
 
   ],
   imports: [

@@ -10,7 +10,6 @@ import { ElettronicaComponent } from './component/topper/elettronica/elettronica
 import { LibriComponent } from './component/topper/libri/libri.component';
 import { ScarpeComponent } from './component/topper/scarpe/scarpe.component';
 import { SportComponent } from './component/topper/sport/sport.component';
-import { AssistenzaComponent } from './component/footer/assistenza/assistenza.component';
 import { ChiSiamoComponent } from './component/footer/chi-siamo/chi-siamo.component';
 import { ComeFunzionaComponent } from './component/footer/come-funziona/come-funziona.component';
 import { PrivacyComponent } from './component/footer/privacy/privacy.component';
@@ -19,11 +18,14 @@ import { CarrelloComponent } from './component/toolbar/carrello/carrello.compone
 import { AccediComponent } from './component/toolbar/accedi/accedi.component';
 import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
 import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
+import { MessaggisticaComponent } from './component/toolbar/messaggistica/messaggistica.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
+
+    {path: 'messaggistica', component: MessaggisticaComponent},
 
     {path: 'profilo', component: ProfiloComponent},
     {path: 'accedi', component: AccediComponent},
@@ -44,7 +46,6 @@ const routes: Routes = [
 
     {path: 'chi-siamo', component: ChiSiamoComponent},
     {path: 'privacy', component: PrivacyComponent},
-    {path: 'assistenza', component: AssistenzaComponent},
     {path: 'come-funziona', component: ComeFunzionaComponent}
   ]},
 

@@ -35,6 +35,11 @@ mat-form-field{
   flex: 1 1 auto;
 }
 
+.Bprofilo {
+  width: fit-content ;
+}
+
+
 mat-list{
   display: flex;
 }

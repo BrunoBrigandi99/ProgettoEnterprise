@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { ServiceService } from 'src/app/Service/service.service';
+
+import { Prodotto } from 'src/app/Model/Prodotto';
+
+
 
 @Component({
   selector: 'app-home',
@@ -8,16 +13,40 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private service: ServiceService){}
 
-  cliccato() {
-    this.router.navigate(['/pag-annuncio']);
+  public prodotti: Prodotto[] = [];
+
+  ngOnInit(): void {
+    this.service.getProdotti().subscribe(pro => {
+      this.prodotti = pro
+    });
+
+
+  }
+
+  //converte immagine per poter essere aperta nell'html
+  // toUrl(im: any){
+  //   const imageUrl = `data:image/png;base64,${im}`;
+  //   return imageUrl;
+  // }
+
+
+
+  //dato l'id dell'annuncio, va a quella pagina dell'annuncio
+  prendiAnnuncio(id: number) {
+    this.router.navigate(['/pag-annuncio', id]);
   }
 
   carrello() {
     this.router.navigate(['/carrello']);
   }
 
+
+
+}
+
+/* STATICO
   products = [
     {
       imageUrl: 'https://via.placeholder.com/350x250',
@@ -86,4 +115,4 @@ export class HomeComponent {
       description: 'Libro di cucina italiano'
     },
   ];
-}
+  */
