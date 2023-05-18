@@ -1,0 +1,23 @@
+<form [formGroup]="formRegistrazione" (ngSubmit)="onSubmit()">
+
+    <p>Nome:</p>
+    <input type="text" formControlName="nome">
+
+    <p>Cognome:</p>
+    <input type="text" formControlName="cognome">
+
+    <p>Email:</p>
+    <input type="email" formControlName="email">
+
+    <p>Password:</p>
+    <input type="password" formControlName="password">
+
+    <p>Posizione:</p>
+    <input type="text" formControlName="posizione">
+
+    <p>Telefono</p>
+    <input type="text" formControlName="telefono">
+
+    <button type="submit">Registrati</button>
+
+</form>

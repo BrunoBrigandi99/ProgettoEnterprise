@@ -1,3 +1,4 @@
 - Creare una lista statica in modo da dare un aspetto a Vinted
 - Fare la pagina del profilo utente (aggiungendo una lista sempre per i campi statici
 - Mettere le notifiche in rosso nella parte della messaggistica
+- Utilizzare swagger per controllare il backend

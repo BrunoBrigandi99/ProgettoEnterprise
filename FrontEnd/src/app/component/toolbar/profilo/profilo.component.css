@@ -1,0 +1,11 @@
+.bordo { border: 1px solid #ccc;  border-radius: 0.5rem; padding-bottom: 15px;  }
+
+.bordo-article { display: inline-block; border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px; }
+
+img { width: 200px; height: 200px; }
+
+@media (max-width: 750px) {
+    .article { flex-wrap: wrap; }
+    .article img { margin-left: 20px; margin-right: 20px; max-width: 95%; }
+    .article .testo { margin-left: 20px; margin-right: 20px; margin-top: 20px; }
+}

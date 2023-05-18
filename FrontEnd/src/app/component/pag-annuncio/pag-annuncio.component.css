@@ -1,0 +1,22 @@
+.container { display: flex; flex-wrap: wrap;  }
+
+.spazio-imm{ display: inline-block; margin: 1%; width: 60%; height: 615px; padding: 1%;                 border: 1px solid #ccc; border-radius: 0.5rem; }
+.testo     { display: inline-block; margin: 1%; width: 30%; height: 615px; padding: 1%;                 border: 1px solid #ccc; border-radius: 0.5rem; }
+
+.imm1{ width: 96%; height: 450px; object-fit: cover; padding: 1%; margin: 1%;}
+.imm2{ width: 12%; height: 100px; object-fit: cover; object-position: center center; padding: 1%; }
+
+/*Quando restringo la pagina*/
+@media (max-width: 800px) {
+    .spazio-imm{ margin: 1%; width: 100%; height: 615px; padding: 1%;            border: 1px solid #ccc; border-radius: 0.5rem; }
+    .testo     { margin: 1%; width: 100%; height: 100%; padding: 2%;                           border: 1px solid #ccc; border-radius: 0.5rem; }
+
+}
+
+
+
+.bordo { width: 100%; padding: 2%; margin: 1%;                     border: 1px solid #ccc;  border-radius: 0.5rem; padding-bottom: 15px;  }
+
+.bordo-article { display: inline-block; border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px; }
+
+img { width: 200px; height: 200px; }

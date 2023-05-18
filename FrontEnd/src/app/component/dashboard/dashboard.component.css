@@ -35,8 +35,15 @@ mat-form-field{
   flex: 1 1 auto;
 }
 
-.mat-list-item {
+mat-list{
+  display: flex;
+}
+
+.filtro button:hover {
   cursor: pointer;
+  background-color: lightgrey;
+  border-radius: 5px;
+
 }
 
 .mat-card {
@@ -69,10 +76,10 @@ mat-form-field{
   }
 }
 
-footer { position:relative; bottom: 0; left: 0; width: 100%; height: 200px; background-color: grey; }
+footer { position:relative; bottom: 0; left: 0; width: 100%; height: 200px; background-color: grey; text-align: center; }
 footer mat-card { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-footer mat-list { display: flex; justify-content: space-around; align-items: center; width: 100%; }
-footer mat-list-item { font-size: 1rem; font-weight: bold; color: white; cursor: pointer; transition: all 0.2s ease-in-out; border-radius: 5px; }
+footer mat-list { display: flex; justify-content: space-around; align-items: center; width: 100%;}
+footer mat-list-item { font-size: 1rem; font-weight: bold; color: white; cursor: pointer; transition: all 0.2s ease-in-out; border-radius: 5px; width: 150px;}
 footer mat-list-item:hover { background-color: white; color: black; }
 footer mat-list-item.active { background-color: white; color: black; }
 

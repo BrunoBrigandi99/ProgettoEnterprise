@@ -16,11 +16,24 @@ import { ComeFunzionaComponent } from './component/footer/come-funziona/come-fun
 import { PrivacyComponent } from './component/footer/privacy/privacy.component';
 import { ProfiloComponent } from './component/toolbar/profilo/profilo.component';
 import { CarrelloComponent } from './component/toolbar/carrello/carrello.component';
+import { AccediComponent } from './component/toolbar/accedi/accedi.component';
+import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
+import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
+
+    {path: 'profilo', component: ProfiloComponent},
+    {path: 'accedi', component: AccediComponent},
+    {path: 'registrati', component: RegistratiComponent},
+
+    {path: 'carrello', component: CarrelloComponent},
+
+    {path: 'pag-annuncio/:id', component: PagAnnuncioComponent},
+    {path: 'aggiungi-annuncio', component: AggiungiAnnuncioComponent},
+
     {path: 'abbigliamento', component: AbbigliamentoComponent},
     {path: 'accessori', component: AccessoriComponent},
     {path: 'casa', component: CasaComponent},
@@ -28,13 +41,11 @@ const routes: Routes = [
     {path: 'libri', component: LibriComponent},
     {path: 'scarpe', component: ScarpeComponent},
     {path: 'sport', component: SportComponent},
-    {path: 'profilo', component: ProfiloComponent},
-    {path: 'carrello', component: CarrelloComponent},
-  {path: 'chi-siamo', component: ChiSiamoComponent},
-  {path: 'privacy', component: PrivacyComponent},
-  {path: 'assistenza', component: AssistenzaComponent},
-  {path: 'come-funziona', component: ComeFunzionaComponent},
-    {path: 'pag-annuncio', component: PagAnnuncioComponent},
+
+    {path: 'chi-siamo', component: ChiSiamoComponent},
+    {path: 'privacy', component: PrivacyComponent},
+    {path: 'assistenza', component: AssistenzaComponent},
+    {path: 'come-funziona', component: ComeFunzionaComponent}
   ]},
 
 

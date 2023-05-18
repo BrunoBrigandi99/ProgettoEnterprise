@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Auth/auth.service';
+import { Prodotto } from 'src/app/Model/Prodotto';
+import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
   selector: 'app-profilo',
@@ -7,23 +11,25 @@ import { Component } from '@angular/core';
 })
 export class ProfiloComponent {
 
-  username ="Io";
-  firstName ="Sono";
-  lastName ="Giovanni";
-  email = "iosonoGiovanni@gmail.com";
-  profileImageUrl = "https://via.placeholder.com/150";
+  constructor(public auth: AuthService, private service: ServiceService, private router: Router){}
 
+  prodotti: Prodotto[] = [];
 
-  /*
-  <!-- Definisce il controller Angular -->
-  <script>
-    var app = angular.module('myApp', ['ngMaterial']);
-    app.controller('MyController', function($scope) {
-      $scope.username = 'IlMioUsername';
-      $scope.firstName = 'Nome';
-      $scope.lastName = 'Cognome';
-      $scope.email = 'email@example.com';
-      $scope.profileImageUrl = 'https://via.placeholder.com/150';
+  ngOnInit(){
+    this.service.getProdottiByUserId(this.auth.getutenteCorrente().id.toString()).subscribe(pro => {
+      this.prodotti = pro
     });
-  </script>*/
+
+  }
+
+
+
+
+
+
+  //dato l'id dell'annuncio, va a quella pagina dell'annuncio
+  prendiAnnuncio(id: number) {
+    this.router.navigate(['/pag-annuncio', id]);
+  }
+
 }

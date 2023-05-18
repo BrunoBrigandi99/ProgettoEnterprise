@@ -1,1 +1,78 @@
-<p>pag-annuncio works!</p>
+<div class="container">
+  <div class="spazio-imm">
+
+      <img class="imm1" src="{{ottieniFoto(0)}}">
+      <!--NON FUNZIONA il div manda a capo
+      <div *ngFor="let valore of [1, 2, 3, 4, 5, 6, 7]">
+          <img (click)="cambiaImmPrin(valore)" class="imm2" src="{{ottieniFoto(valore)}}">
+      </div>
+      -->
+
+      <img (click)="cambiaImmPrin(1)" class="imm2" src="{{ottieniFoto(1)}}">
+      <img (click)="cambiaImmPrin(2)" class="imm2" src="{{ottieniFoto(2)}}">
+      <img (click)="cambiaImmPrin(3)" class="imm2" src="{{ottieniFoto(3)}}">
+      <img (click)="cambiaImmPrin(4)" class="imm2" src="{{ottieniFoto(4)}}">
+      <img (click)="cambiaImmPrin(5)" class="imm2" src="{{ottieniFoto(5)}}">
+      <img (click)="cambiaImmPrin(6)" class="imm2" src="{{ottieniFoto(6)}}">
+      <img (click)="cambiaImmPrin(7)" class="imm2" src="{{ottieniFoto(7)}}">
+
+  </div>
+
+
+  <div class="testo">
+      <h2>{{ prodotto.nomeProdotto }}</h2>
+      <h4>Categoria: {{prodotto.categoria}}</h4>
+      <p>Prezzo: {{ prodotto.prezzo }}</p>
+      <p>Taglia: {{ prodotto.taglia }}</p>
+      <p>Condizione: {{prodotto.condizione}}</p>
+      <p>Colore: {{prodotto.colore}}</p>
+      <p>Brand: {{prodotto.brand}}</p>
+      <p>Descrizione: {{prodotto.descrizione}}</p>
+  </div>
+
+  <!--Altri prodotti di questo venditore
+  <h1>Altri prodotti di questo venditore:</h1>
+
+  <div class="bordo">
+      <div class="bordo-article" *ngFor="let prodotto of altriProd" >
+          <div (click)="prendiAnnuncio(prodotto.id)">
+
+              <div *ngIf="prodotto.immagini && prodotto.immagini[1] !== undefined; else erroreFoto">
+                  <img *ngIf="prodotto.immagini" [src]="toUrl(prodotto.immagini[1].image)" >
+              </div>
+              <ng-template #erroreFoto>
+              <img src="assets/NoImage.jpg">
+              </ng-template>
+
+              <h2>{{ prodotto.nomeProdotto }}</h2>
+              <p>{{ prodotto.taglia }}</p>
+              <p>Prezzo: {{ prodotto.prezzo }}</p>
+
+          </div>
+      </div>
+  </div>
+  -->
+
+  <!--Venditore-->
+  <h1>Venditore:</h1>
+  <div class="bordo">
+      <p>{{utente.nome}} {{utente.cognome}}</p>
+      <h4>Contatti:</h4>
+      <p>Telefono: {{utente.telefono}}</p>
+      <p>Email: {{utente.email}}</p>
+      <button>Contatta L'utente</button>
+  </div>
+
+
+  <!--Recensioni del venditore
+  <h1>Recensioni di questo venditore:</h1>
+  <div class="bordo">
+      <div class="bordo-article" *ngFor="let rec of recensioni" >
+          <p>{{rec.autore}}</p>
+          <p>{{rec.valutazione}}</p>
+          <p>{{rec.commento}}
+      </div>
+  </div>
+  -->
+</div>
+

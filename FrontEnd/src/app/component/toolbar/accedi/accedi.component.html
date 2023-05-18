@@ -1,0 +1,12 @@
+<form [formGroup]="formAccesso" (ngSubmit)="onSubmit()">
+
+    <p>Email:</p>
+    <input type="email" formControlName="email">
+
+    <p>Password:</p>
+    <input type="password" formControlName="password">
+
+
+    <button type="submit">Accedi</button>
+
+</form>

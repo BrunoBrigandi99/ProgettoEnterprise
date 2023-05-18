@@ -1,7 +1,8 @@
+<!--BARRA SUPERIORE-->
 <mat-toolbar>
+  <!--LOGO E BARRA DI RICERCA CON BOTTONE-->
   <mat-toolbar-row>
-    <!--<button id="vinted" mat-button routerLink="home" [routerLinkActive]="'active'">Vinted</button>-->
-    <button mat-button routerLink="home" [routerLinkActive]="'active'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"></button>
+    <button mat-button routerLink="home"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"></button>
     <span class="spacer"></span>
     <mat-form-field>
       <input matInput placeholder="Cerca articoli">
@@ -9,38 +10,57 @@
     <button mat-icon-button>
       <mat-icon>search</mat-icon>
     </button>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+
+    <!--BOTTONE VENDI-->
+    <button mat-menu-item routerLink="aggiungi-annuncio">
+      Vendi
+    </button>
+
+    <!--BOTTONE PROFILO-->
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="profilo" [routerLinkActive]="'active'">
+      <button mat-menu-item routerLink="profilo">
         <mat-icon>manage_accounts</mat-icon>
         <span>Profilo</span>
       </button>
-      <button mat-menu-item routerLink="home" [routerLinkActive]="'active'">
+      <button mat-menu-item routerLink="accedi">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Accedi</span>
+      </button>
+      <button mat-menu-item routerLink="registrati">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Registrati</span>
+      </button>
+      <button mat-menu-item routerLink="home">
         <mat-icon>logout</mat-icon>
         <span>Esci</span>
       </button>
     </mat-menu>
-    <button mat-icon-button routerLink="carrello" [routerLinkActive]="'active'">
+
+    <!--BOTTONE CARRELLO-->
+    <button mat-icon-button routerLink="carrello">
       <mat-icon>shopping_cart</mat-icon>
     </button>
+
   </mat-toolbar-row>
 </mat-toolbar>
 
+<!--BOTTONI FILTRI-->
 <mat-card>
   <mat-card-header>
     <mat-card-title>Categorie</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-list style="display: flex;">
-      <mat-list-item role="listitem" routerLink="abbigliamento" [routerLinkActive]="'active'">Abbigliamento</mat-list-item>
-      <mat-list-item role="listitem" routerLink="scarpe" [routerLinkActive]="'active'">Scarpe</mat-list-item>
-      <mat-list-item role="listitem" routerLink="accessori" [routerLinkActive]="'active'">Accessori</mat-list-item>
-      <mat-list-item role="listitem" routerLink="elettronica" [routerLinkActive]="'active'">Elettronica</mat-list-item>
-      <mat-list-item role="listitem" routerLink="libri" [routerLinkActive]="'active'">Libri</mat-list-item>
-      <mat-list-item role="listitem" routerLink="sport" [routerLinkActive]="'active'">Sport</mat-list-item>
-      <mat-list-item role="listitem" routerLink="casa" [routerLinkActive]="'active'">Casa</mat-list-item>
+    <mat-list class="filtro">
+      <button role="listitem" routerLink="">Abbigliamento</button>
+      <button role="listitem" routerLink="">Scarpe</button>
+      <button role="listitem" routerLink="">Accessori</button>
+      <button role="listitem" routerLink="">Elettronica</button>
+      <button role="listitem" routerLink="">Libri</button>
+      <button role="listitem" routerLink="">Sport</button>
+      <button role="listitem" routerLink="">Casa</button>
     </mat-list>
   </mat-card-content>
 
@@ -50,14 +70,14 @@
 
 </mat-card>
 
+<!--FOOTER-->
 <footer>
-  <mat-card style="background-color: grey;">
+  <mat-card style="background-color: #007782;">
     <mat-card-content>
       <mat-list style="display: flex;">
-        <mat-list-item role="listitem" routerLink="chi-siamo" [routerLinkActive]="'active'">Chi siamo</mat-list-item>
-        <mat-list-item role="listitem" routerLink="privacy" [routerLinkActive]="'active'">Privacy</mat-list-item>
-        <mat-list-item role="listitem" routerLink="assistenza" [routerLinkActive]="'active'">Assistenza</mat-list-item>
-        <mat-list-item role="listitem" routerLink="come-funziona" [routerLinkActive]="'active'">Come Funziona</mat-list-item>
+        <mat-list-item role="listitem" routerLink="chi-siamo">Chi siamo</mat-list-item>
+        <mat-list-item role="listitem" routerLink="privacy">Privacy</mat-list-item>
+        <mat-list-item role="listitem" routerLink="come-funziona">Come Funziona</mat-list-item>
       </mat-list>
     </mat-card-content>
   </mat-card>

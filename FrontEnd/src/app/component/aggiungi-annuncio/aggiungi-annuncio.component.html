@@ -1,0 +1,81 @@
+<p>aggiungi-annuncio works!</p>
+<div class="contenitore">
+
+  <form class="foglio" [formGroup]="formAggAnn" (ngSubmit)="onSubmit()">
+    <h1>Vendi un articolo</h1>
+    <div class="bordo">
+      <p>Inserisci 8 immagini del tuo prodotto:</p>
+      <input type="file" (change)="onFileSelected($event)"> <!--Togliere scritta-->
+      <br>
+      <div class="array-immagini" *ngFor="let imag of images">
+        <img src="{{imag.image}}" />
+      </div>
+      <p *ngIf="maxImage" style="color: red;">Hai raggiunto il numero massimo di immagini</p>
+    </div>
+
+    <div class="bordo">
+      <p>Adesso dacci qualche informazione:</p>
+
+      <div class="box">
+        <label>Titolo:</label>
+        <input type="text" placeholder="Inserisci qui il titolo" formControlName="titolo">
+        <br>
+        <label>Prezzo:</label>
+        <input type="text" placeholder="Inserisci qui il prezzo" formControlName="prezzo">
+        <br>
+        <label>Taglia:</label>
+        <input type="text" placeholder="Inserisci qui la taglia" formControlName="taglia">
+        <br>
+        <label>Categoria:</label>
+        <select formControlName="categoria">
+          <option>Abbigliamento</option>
+          <option>Scarpe</option>
+          <option>Accessori</option>
+          <option>Elettronica</option>
+          <option>Libri</option>
+          <option>Sport</option>
+          <option>Casa</option>
+          <option>Altro</option>
+        </select>
+        <br>
+        <label>Condizione:</label>
+        <select formControlName="condizione">
+          <option>Nuovo</option>
+          <option>Nuovo con cartellino</option>
+          <option>Ottime</option>
+          <option>Buone</option>
+          <option>Discrete</option>
+        </select>
+        <br>
+        <label>Brand:</label>
+        <input type="text" placeholder="Inserisci qui il brand" formControlName="brand">
+        <br>
+        <label>Colore:</label>
+        <select formControlName="colore">
+          <option>Nessun Colore</option>
+          <option>Rosso</option>
+          <option>Blu</option>
+          <option>Giallo</option>
+          <option>Verde</option>
+          <option>Arancione</option>
+          <option>Viola</option>
+          <option>Nero</option>
+          <option>Bianco</option>
+          <option>Grigio</option>
+          <option>Marrone</option>
+          <option>Rosa</option>
+          <option>Celeste</option>
+          <option>Oro</option>
+          <option>Argento</option>
+          <option>Beige</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="bordo">
+        <p>Aggiungi una descrizione:</p>
+        <textarea formControlName="descrizione"></textarea>
+    </div>
+    <button>Carica</button>
+  </form>
+</div>

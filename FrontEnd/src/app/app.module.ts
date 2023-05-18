@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -16,10 +17,13 @@ import { ElettronicaComponent } from './component/topper/elettronica/elettronica
 import { LibriComponent } from './component/topper/libri/libri.component';
 import { SportComponent } from './component/topper/sport/sport.component';
 import { CasaComponent } from './component/topper/casa/casa.component';
+import { ProfiloComponent } from './component/toolbar/profilo/profilo.component';
+import { CarrelloComponent } from './component/toolbar/carrello/carrello.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -31,8 +35,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
-import { ProfiloComponent } from './component/toolbar/profilo/profilo.component';
-import { CarrelloComponent } from './component/toolbar/carrello/carrello.component';
+import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
+import { AccediComponent } from './component/toolbar/accedi/accedi.component';
+import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
 
 
 
@@ -57,6 +62,9 @@ import { CarrelloComponent } from './component/toolbar/carrello/carrello.compone
     CasaComponent,
     ProfiloComponent,
     CarrelloComponent,
+    AggiungiAnnuncioComponent,
+    AccediComponent,
+    RegistratiComponent,
 
   ],
   imports: [
@@ -65,6 +73,8 @@ import { CarrelloComponent } from './component/toolbar/carrello/carrello.compone
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+
     MatToolbarModule,
     MatIconModule,
     MatTabsModule,
