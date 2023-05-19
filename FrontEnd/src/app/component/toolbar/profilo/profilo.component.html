@@ -1,8 +1,18 @@
-<p>Nome: {{this.auth.getutenteCorrente().nome}}</p>
+<!--<p>Nome: {{this.auth.getutenteCorrente().nome}}</p>
 <p>Cognome: {{this.auth.getutenteCorrente().cognome}}</p>
 <p>Email: {{this.auth.getutenteCorrente().email}}</p>
 <p>Password: {{this.auth.getutenteCorrente().posizione}}</p>
-<p>Telefono: {{this.auth.getutenteCorrente().telefono}}</p>
+<p>Telefono: {{this.auth.getutenteCorrente().telefono}}</p>-->
+<div class="container">
+  <h1>Profilo Utente</h1>
+  <div class="profile">
+    <img src="https://www.donnamoderna.com/content/uploads/2021/08/Donna-con-cellulare-830x625.jpg" alt="Foto profilo">
+    <h2>Nome: {{this.auth.getutenteCorrente().nome}}</h2>
+    <h2>Cognome: {{this.auth.getutenteCorrente().cognome}}</h2>
+    <h2>Email: {{this.auth.getutenteCorrente().email}}</h2>
+    <h2>Password: {{this.auth.getutenteCorrente().posizione}}</h2>
+    <h2>Telefono: {{this.auth.getutenteCorrente().telefono}}</h2>
+  </div>
 
 <div>
     <h1>Articoli in vendita:</h1>

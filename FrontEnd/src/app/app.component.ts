@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'progettoEnterprise';
+
+  badgeValue: number = 5;
 }

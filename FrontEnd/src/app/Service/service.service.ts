@@ -10,18 +10,18 @@ import { Recensione } from '../Model/Recensione';
   providedIn: 'root'
 })
 export class ServiceService {
-  
+
 
   constructor(private http: HttpClient) { }
 
-  // ALESSANDRO BACKEND
+  /* ALESSANDRO BACKEND
   //############################################################## PRODOTTO ##############################################################
-  //Funziona 
+  //Funziona
   getProdotti(): Observable <Prodotto[]>{
     return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/findAll');
   }
 
-  //Funziona 
+  //Funziona
   getProdotto(idProdotto: string): Observable <Prodotto> {
     return this.http.get<Prodotto>('http://localhost:8080/prodotto-api/'+ idProdotto);
   }
@@ -48,18 +48,18 @@ export class ServiceService {
 
   registrati(utente: Utente): Observable <Utente>{
     return this.http.post<Utente>('http://localhost:8080/utente-api/creaUtente', utente);
-  }
-  
+  }*/
 
 
 
-  /* CHRISTIAN BACKEND
+
+  // CHRISTIAN BACKEND
   //############################################################## PRODOTTO ##############################################################
-  //Restituisce una lista di prodotti deve restituire un prodotto 
+  //Restituisce una lista di prodotti deve restituire un prodotto
   getProdotto(idProdotto: string): Observable <Prodotto> {
     return this.http.get<Prodotto>('http://localhost:8080/prodotto-api/prodotti/'+ idProdotto);
   }
-  
+
 
   //FUNZIONA
   getProdotti(): Observable <Prodotto[]>{
@@ -96,11 +96,11 @@ export class ServiceService {
   registrati(utente: Utente): Observable<Utente> {
     return this.http.post<Utente>('http://localhost:8080/utente-api/salva', utente);
   }
-  
 
-  */
-  
 
- 
-  
+
+
+
+
+
 }

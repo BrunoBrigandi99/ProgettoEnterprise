@@ -1,0 +1,39 @@
+mat-card{
+  height: 800px;
+}
+
+.messaggi{
+  width: 100%;
+  background-color: #007782;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-color: #007782;
+}
+
+.email-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sender {
+  font-weight: bold;
+  color: white;
+  font-size: larger;
+}
+
+.timestamp {
+  color: white;
+}
+
+.email-subject {
+  color: white;
+  font-size: medium;
+}
+
+.email-body {
+  margin-top: 10px;
+  color: white;
+  font-size: small;
+
+}

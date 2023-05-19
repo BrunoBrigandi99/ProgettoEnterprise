@@ -38,6 +38,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 
 
@@ -87,6 +89,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatListModule,
     MatGridListModule,
     MatMenuModule,
+    MatSidenavModule,
 
   ],
   providers: [],
