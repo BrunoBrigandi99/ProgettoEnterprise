@@ -49,7 +49,7 @@ export class AggiungiAnnuncioComponent {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      const formato = reader.result as Uint8Array;
+      const formato = reader.result as ArrayBuffer;
 
       const image: ImageBackend = new ImageBackend();
       image.image = formato; 
