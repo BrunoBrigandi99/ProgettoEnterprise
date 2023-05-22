@@ -98,9 +98,16 @@ export class ServiceService {
   }
 
 
+  /*METODI PER NOTIFICHE MESSAGGISTICA */
+  badgeValue: number = 5;
 
+  azzeraNumero(){
+    this.badgeValue = 0;
+  }
 
-
+  aumentaNumero(){
+    this.badgeValue--;
+  }
 
 
 }

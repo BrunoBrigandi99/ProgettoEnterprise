@@ -19,11 +19,11 @@
     <!--MESSAGGISTICA-->
     <!--usare matBadge per prendere in modo dinamico il numero delle notifiche-->
 
-    <button mat-icon-button *ngIf="badgeValue > 0" (click)="azzeraBadge()" routerLink="messaggistica">
-      <mat-icon matBadge="{{badgeValue}}" matBadgeColor="warn">email</mat-icon>
+    <button mat-icon-button *ngIf="service.badgeValue > 0" routerLink="messaggistica" (click) = "service.azzeraNumero()">
+      <mat-icon matBadge="{{service.badgeValue}}" matBadgeColor="warn">email</mat-icon>
     </button>
 
-    <button mat-icon-button *ngIf="badgeValue == 0" routerLink="messaggistica">
+    <button mat-icon-button *ngIf="service.badgeValue == 0" routerLink="messaggistica">
       <mat-icon>email</mat-icon>
     </button>
 

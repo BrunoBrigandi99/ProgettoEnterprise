@@ -43,20 +43,5 @@ export class MessaggisticaComponent {
     email.expanded = !email.expanded;
   }
 
-  badgeValue: number = 5;
-
-  aumentaBadge(){
-    this.badgeValue++;
-  }
-
-  diminuisciBadge(){
-    if(this.badgeValue > 0){
-      this.badgeValue--;
-    }
-  }
-
-  azzeraBadge(){
-    this.badgeValue = 0;
-  }
 
 }

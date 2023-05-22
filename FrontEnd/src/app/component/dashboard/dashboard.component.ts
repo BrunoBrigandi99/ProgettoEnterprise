@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,26 +8,14 @@ import {MediaMatcher} from '@angular/cdk/layout';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent{
+
+  constructor(public service: ServiceService){}
+
   hidden = false;
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
-
   }
 
-  badgeValue: number = 5;
 
-  aumentaBadge(){
-    this.badgeValue++;
-  }
-
-  diminuisciBadge(){
-    if(this.badgeValue > 0){
-      this.badgeValue--;
-    }
-  }
-
-  azzeraBadge(){
-    this.badgeValue = 0;
-  }
 }
