@@ -3,11 +3,12 @@
   <h1>Articoli più richiesti:</h1>
   <div class="bordo">
 
+    
     <div class="bordo-article" *ngFor="let prodotto of prodotti" >
       <div (click)="prendiAnnuncio(prodotto.id)">
 
-        <div *ngIf="prodotto.immagini && prodotto.immagini[1] !== undefined; else erroreFoto">
-          <img *ngIf="prodotto.immagini" [src]="prodotto.immagini[0].image" >
+        <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
+          <img *ngIf="prodotto.images" src="{{toUrl(prodotto.images[0].image)}}" >
         </div>
         <ng-template #erroreFoto>
           <img src="assets/NoImage.jpg">
@@ -20,9 +21,16 @@
       </div>
 
     </div>
+
+
   </div>
 </div>
 
+<p>{{prodotti[0].nomeProdotto}}</p>
+
+<img src="{{toUrl(prodotti[3].images[0].image)}}" >
+
+<p>{{toUrl(prodotti[0].images[0].image)}}</p>
 
 <!-- CARD STATICHE
 <mat-card (click)="cliccato()">

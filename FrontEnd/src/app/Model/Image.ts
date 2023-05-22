@@ -3,7 +3,7 @@ import { Prodotto } from "./Prodotto";
 export class Image{
 
     id!: number;
-    image!: string;
+    image!: ArrayBuffer;
     //prodotto!: Prodotto;
 
 }

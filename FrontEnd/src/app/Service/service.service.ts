@@ -68,20 +68,6 @@ export class ServiceService {
   }
 
   setProdotto(prodotto: ProdottoBackend): Observable <Prodotto>{
-    const body = {
-      "nomeProdotto": "Prodotto esempio",
-      "prezzo": 19.99,
-      "venditoreId": 1,
-      "images": [
-        {
-          "image": [
-            "path-to-image-1.jpg",
-            "path-to-image-2.jpg",
-            "path-to-image-3.jpg"
-          ]
-        }
-      ]
-    }
     return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/salva', prodotto);
   }
 
@@ -110,6 +96,11 @@ export class ServiceService {
   registrati(utente: Utente): Observable<Utente> {
     return this.http.post<Utente>('http://localhost:8080/utente-api/salva', utente);
   }
+
+
+
+
+
 
 
   /*METODI PER NOTIFICHE MESSAGGISTICA */

@@ -15,7 +15,7 @@ export class Prodotto{
     taglia!: string;
     
     utente!: Utente;
-    immagini!: Image[];
+    images!: Image[];
   
 }
 

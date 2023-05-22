@@ -7,6 +7,8 @@ export class ProdottoBackend{
     prezzo!: number;
     venditoreId!: number;
     images!: ImageBackend[];
+
+    
 }
 
 

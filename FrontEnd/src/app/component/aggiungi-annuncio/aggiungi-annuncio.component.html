@@ -8,10 +8,12 @@
       <input type="file" (change)="onFileSelected($event)"> <!--Togliere scritta-->
       <br>
       <div class="array-immagini" *ngFor="let imag of images">
-        <img src="{{imag.image}}" />
+        <img src="{{toUrl(imag.image)}}" />
       </div>
       <p *ngIf="maxImage" style="color: red;">Hai raggiunto il numero massimo di immagini</p>
     </div>
+
+    
 
     <div class="bordo">
       <p>Adesso dacci qualche informazione:</p>

@@ -20,16 +20,18 @@ export class HomeComponent {
   ngOnInit(): void {
     this.service.getProdotti().subscribe(pro => {
       this.prodotti = pro
+
+      //console.log("prodotto:",this.prodotti)
     });
 
 
   }
 
   //converte immagine per poter essere aperta nell'html
-  // toUrl(im: any){
-  //   const imageUrl = `data:image/png;base64,${im}`;
-  //   return imageUrl;
-  // }
+  toUrl(im: ArrayBuffer){
+    const imageUrl = 'data:image/jpeg;base64,/9j/'+im;
+    return imageUrl;
+  }
 
 
 

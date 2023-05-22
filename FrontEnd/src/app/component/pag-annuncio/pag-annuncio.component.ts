@@ -26,12 +26,17 @@ export class PagAnnuncioComponent {
     //dall'id pel prodotto ricevuto come parametro prendo il prodotto
     let id: string = "";
     id += this.route.snapshot.paramMap.get("id");
-    this.service.getProdotto(id).subscribe(pro => this.prodotto = pro);
+    this.service.getProdotto(id).subscribe(pro => {
+      this.prodotto = pro
+
+      //this.utente.id = this.prodotto.utente;
+      //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
+    
+    });
 
 
 
-    //this.utente = this.prodotto.utente;
-    //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
+    
 
     //this.recensioni = this.utente.recensioni;
     //this.service.getRecensioni(this.utente).subscribe(rec => this.recensioni = rec)
@@ -43,25 +48,25 @@ export class PagAnnuncioComponent {
 
 
   //converte immagine per poter essere aperta nell'html
-  toUrl(im: any){
-    const imageUrl = `data:image/png;base64,${im}`;
+  toUrl(im: ArrayBuffer){
+    const imageUrl = 'data:image/jpeg;base64,/9j/'+im;
     return imageUrl;
   }
 
   //modifica l'immagine principale con quelle secondarie
   ottieniFoto(numero: number){
-    if (this.prodotto.immagini && this.prodotto.immagini[numero] != undefined){
-      //return this.toUrl(this.prodotto.immagini[numero].image);
-      return this.prodotto.immagini[numero].image;
+    if (this.prodotto.images && this.prodotto.images[numero] != undefined){
+      //return this.toUrl(this.prodotto.images[numero].image);
+      return this.toUrl(this.prodotto.images[numero].image);
     }else{ return "assets/NoImage.jpg";}
   }
 
-  //cambia l'immagine principale c'è un errore quando si clicca sulle immagini non caricate
+  //cambia l'immagine principale c'è un errore quando si clicca sulle images non caricate
   cambiaImmPrin(valore: number){
-    if(this.prodotto.immagini[valore].image !== "assets/NoImage.jpg"){
-      const imm: Image = this.prodotto.immagini[0];
-      this.prodotto.immagini[0] = this.prodotto.immagini[valore];
-      this.prodotto.immagini[valore] = imm;
+    if(this.toUrl(this.prodotto.images[valore].image) !== "assets/NoImage.jpg"){
+      const imm: Image = this.prodotto.images[0];
+      this.prodotto.images[0] = this.prodotto.images[valore];
+      this.prodotto.images[valore] = imm;
     }
   }
 
