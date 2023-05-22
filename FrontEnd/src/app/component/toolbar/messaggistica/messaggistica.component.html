@@ -6,7 +6,7 @@
   <mat-divider></mat-divider>
   <mat-card-content>
     <mat-nav-list>
-      <button class="messaggi" *ngFor="let email of emails" (click)="toggleEmailBody(email); diminuisciBadge()">
+      <button class="messaggi" *ngFor="let email of emails" (click)="toggleEmailBody(email)">
         <div mat-line class="email-header">
           <div class="sender">{{ email.destinatario }}</div>
           <div class="timestamp">{{ email.timestamp }}</div>

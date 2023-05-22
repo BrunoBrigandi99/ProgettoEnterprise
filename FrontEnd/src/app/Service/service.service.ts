@@ -112,8 +112,6 @@ export class ServiceService {
   }
 
 
-
-
   /*METODI PER NOTIFICHE MESSAGGISTICA */
   badgeValue: number = 5;
 
@@ -121,9 +119,6 @@ export class ServiceService {
     this.badgeValue = 0;
   }
 
-  aumentaNumero(){
-    this.badgeValue--;
-  }
 
 
 
