@@ -39,6 +39,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
+import { MessaggioComponent } from './component/messaggio/messaggio.component';
 
 
 
@@ -68,6 +70,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AccediComponent,
     RegistratiComponent,
     MessaggisticaComponent,
+    ProfiloVenditoreComponent,
+    MessaggioComponent,
 
   ],
   imports: [

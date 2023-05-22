@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Profilo Venditore</h1>
+  <div class="profile">
+    <div>
+      <img src="https://www.donnamoderna.com/content/uploads/2021/08/Donna-con-cellulare-830x625.jpg" alt="Foto profilo">
+    </div>
+    <div class="dati">
+      <h3>Nome: {{venditore.nome}}</h3>
+      <h3>Cognome: {{venditore.cognome}}</h3>
+      <h3>Email: {{venditore.email}}</h3>
+      <h3>Posizione: {{venditore.posizione}}</h3>
+      <h3>Telefono: {{venditore.telefono}}</h3>
+    </div>
+    <button mat-button><a href="messaggio">Contatta Venditore</a></button>
+  </div>
+
+<div class="container">
+    <h1>Articoli del venditore:</h1>
+    <div class="bordo">
+
+      <div class="bordo-article" *ngFor="let prodotto of prodotti" >
+        <div (click)="prendiAnnuncio(prodotto.id)">
+
+          <div *ngIf="prodotto.images && prodotto.images[1] !== undefined; else erroreFoto">
+            <img *ngIf="prodotto.images" [src]="prodotto.images[0].image" >
+          </div>
+          <ng-template #erroreFoto>
+            <img src="assets/NoImage.jpg">
+          </ng-template>
+
+          <h2>{{ prodotto.nomeProdotto }}</h2>
+          <p>Taglia: {{ prodotto.taglia }}</p>
+          <p>Prezzo: {{ prodotto.prezzo }} €</p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>

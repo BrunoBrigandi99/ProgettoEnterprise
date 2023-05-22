@@ -20,3 +20,12 @@
 .bordo-article { display: inline-block; border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px; }
 
 img { width: 200px; height: 200px; }
+
+button{
+  background-color: #007782;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}

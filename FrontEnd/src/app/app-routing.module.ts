@@ -19,6 +19,8 @@ import { AccediComponent } from './component/toolbar/accedi/accedi.component';
 import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
 import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
 import { MessaggisticaComponent } from './component/toolbar/messaggistica/messaggistica.component';
+import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
+import { MessaggioComponent } from './component/messaggio/messaggio.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
@@ -46,8 +48,14 @@ const routes: Routes = [
 
     {path: 'chi-siamo', component: ChiSiamoComponent},
     {path: 'privacy', component: PrivacyComponent},
-    {path: 'come-funziona', component: ComeFunzionaComponent}
+    {path: 'come-funziona', component: ComeFunzionaComponent},
+
+    {path: 'profilo-venditore', component: ProfiloVenditoreComponent},
+    {path: 'messaggio', component: MessaggioComponent},
   ]},
+
+  {path: 'pag-annuncio', component: PagAnnuncioComponent},
+
 
 
 
