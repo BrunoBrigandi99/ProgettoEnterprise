@@ -5,7 +5,10 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
 
 import { Image } from 'src/app/Model/Image';
+import { ImageBackend } from 'src/app/Model/ImageBackend';
 import { Prodotto } from 'src/app/Model/Prodotto';
+import { ProdottoBackend } from 'src/app/Model/ProdottoBackend';
+import { Utente } from 'src/app/Model/Utente';
 import { ServiceService } from 'src/app/Service/service.service';
 
 
@@ -32,7 +35,7 @@ export class AggiungiAnnuncioComponent {
   }
 
   prodotto = new Prodotto();
-  images: Image[] = [];
+  images: ImageBackend[] = [];
   maxImage: Boolean = false;
 
   constructor (private auth: AuthService, private service: ServiceService, private router: Router){}
@@ -46,11 +49,13 @@ export class AggiungiAnnuncioComponent {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      const base64String = reader.result as string; // Converto il risultato in una stringa
-      //const image: Image = { id: 0, image: base64String };
-      const image: Image = new Image();
-      image.image = base64String;
-      this.images.push(image);
+      const formato = reader.result as Uint8Array;
+
+      const image: ImageBackend = new ImageBackend();
+      image.image = formato; 
+
+      //this.images.push(image);
+ 
     };
   }
 
@@ -66,10 +71,15 @@ export class AggiungiAnnuncioComponent {
     this.prodotto.colore = this.formAggAnn.value.colore;
     this.prodotto.descrizione = this.formAggAnn.value.descrizione;
     this.prodotto.taglia = this.formAggAnn.value.taglia;
-    this.prodotto.immagini = this.images;
-    this.prodotto.utente = this.auth.getutenteCorrente();
+    //this.prodotto.immagini = this.images;
 
-    this.service.setProdotto(this.prodotto).subscribe(
+    const prodottoBackend: ProdottoBackend = new ProdottoBackend();
+    prodottoBackend.nomeProdotto = this.formAggAnn.value.titolo;
+    prodottoBackend.prezzo = this.formAggAnn.value.prezzo;
+    prodottoBackend.venditoreId = 1;
+    prodottoBackend.images = this.images;
+
+    this.service.setProdotto(prodottoBackend).subscribe(
       (response) => {
         console.log('La richiesta HTTP è stata completata con successo:', response);
         this.router.navigate(['/pag-annuncio', response.id]);

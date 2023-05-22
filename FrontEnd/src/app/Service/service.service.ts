@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Prodotto } from '../Model/Prodotto';
 import { Utente } from '../Model/Utente';
 import { Recensione } from '../Model/Recensione';
+import { ProdottoBackend } from '../Model/ProdottoBackend';
 
 @Injectable({
   providedIn: 'root'
@@ -66,9 +67,22 @@ export class ServiceService {
     return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti');
   }
 
-  //FUNZIONA
-  setProdotto(prodotto: Prodotto): Observable <Prodotto>{
-    return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/salva3', prodotto);
+  setProdotto(prodotto: ProdottoBackend): Observable <Prodotto>{
+    const body = {
+      "nomeProdotto": "Prodotto esempio",
+      "prezzo": 19.99,
+      "venditoreId": 1,
+      "images": [
+        {
+          "image": [
+            "path-to-image-1.jpg",
+            "path-to-image-2.jpg",
+            "path-to-image-3.jpg"
+          ]
+        }
+      ]
+    }
+    return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/salva', prodotto);
   }
 
   //
@@ -100,6 +114,16 @@ export class ServiceService {
 
 
 
+  /*METODI PER NOTIFICHE MESSAGGISTICA */
+  badgeValue: number = 5;
+
+  azzeraNumero(){
+    this.badgeValue = 0;
+  }
+
+  aumentaNumero(){
+    this.badgeValue--;
+  }
 
 
 
