@@ -1,10 +1,10 @@
-<p>aggiungi-annuncio works!</p>
 <div class="contenitore">
 
   <form class="foglio" [formGroup]="formAggAnn" (ngSubmit)="onSubmit()">
-    <h1>Vendi un articolo</h1>
+    <br>
+    <h1 style="color: white;">Vendi un articolo</h1>
     <div class="bordo">
-      <p>Inserisci 8 immagini del tuo prodotto:</p>
+      <p><strong>Inserisci 8 immagini del tuo prodotto:</strong></p>
       <input type="file" (change)="onFileSelected($event)"> <!--Togliere scritta-->
       <br>
       <div class="array-immagini" *ngFor="let imag of images">
@@ -13,20 +13,24 @@
       <p *ngIf="maxImage" style="color: red;">Hai raggiunto il numero massimo di immagini</p>
     </div>
 
-    
+
 
     <div class="bordo">
-      <p>Adesso dacci qualche informazione:</p>
+      <br>
+      <p><strong>Adesso dacci qualche informazione:</strong></p>
 
       <div class="box">
         <label>Titolo:</label>
-        <input type="text" placeholder="Inserisci qui il titolo" formControlName="titolo">
+        <input class = "testo" type="text" placeholder="Inserisci qui il titolo" formControlName="titolo">
         <br>
         <label>Prezzo:</label>
-        <input type="text" placeholder="Inserisci qui il prezzo" formControlName="prezzo">
+        <input class="testo" type="text" placeholder="Inserisci qui il prezzo" formControlName="prezzo">
         <br>
         <label>Taglia:</label>
-        <input type="text" placeholder="Inserisci qui la taglia" formControlName="taglia">
+        <input class="testo" type="text" placeholder="Inserisci qui la taglia" formControlName="taglia">
+        <br>
+        <label>Brand:</label>
+        <input type="text" placeholder="Inserisci qui il brand" formControlName="brand">
         <br>
         <label>Categoria:</label>
         <select formControlName="categoria">
@@ -48,9 +52,6 @@
           <option>Buone</option>
           <option>Discrete</option>
         </select>
-        <br>
-        <label>Brand:</label>
-        <input type="text" placeholder="Inserisci qui il brand" formControlName="brand">
         <br>
         <label>Colore:</label>
         <select formControlName="colore">
@@ -75,9 +76,10 @@
 
     </div>
     <div class="bordo">
-        <p>Aggiungi una descrizione:</p>
+      <br>
+        <p><strong>Aggiungi una descrizione:</strong></p>
         <textarea formControlName="descrizione"></textarea>
     </div>
-    <button>Carica</button>
+    <button mat-button>Carica</button>
   </form>
 </div>

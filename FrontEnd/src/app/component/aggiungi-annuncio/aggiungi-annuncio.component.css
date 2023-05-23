@@ -1,16 +1,17 @@
 .contenitore { display: flex; align-items: center; justify-content: center; text-align: center;}
 
-.foglio { background-color: #007782; min-width: 560px; width: 60%;}
+.foglio { background-color: #007782; min-width: 560px; width: 80%;}
 
-.bordo { background-color: white; border: 1px solid #ccc;  border-radius: 0.5rem; margin: 20px;   }
+.bordo { background-color: white; border: 1px solid #ccc;  border-radius: 0.5rem; margin: 20px;}
 
 .array-immagini { display: inline; }
 
 .box{ text-align: right; padding-right: 50px; margin:10px; min-height:10px; display: inline-block ; flex-direction:column; }
 
 img { width: 100px; height: 100px; border-radius: 0.5rem; margin: 10px;}
-input, select { width: 400px; font-size: 16px; margin-bottom: 20px; margin-left: 10px; background-color: #007782; }
-button { margin-bottom: 20px; width: 100px;}
-textarea { width: 450px; height: 200px; margin-bottom: 20px; }
+input, select { width: 400px; font-size: 16px; margin-bottom: 20px; margin-left: 10px; background-color: #007782; color: white; text-align: center; }
+input::placeholder{ color: white; }
+button { margin-bottom: 20px; width: 100px; background-color: white; font-weight:bold }
+textarea { width: 450px; height: 200px; margin-bottom: 20px;}
 
 
