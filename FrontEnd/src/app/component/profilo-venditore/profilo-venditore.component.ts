@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { Prodotto } from 'src/app/Model/Prodotto';
+import { Utente } from 'src/app/Model/Utente';
 import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
@@ -11,12 +12,19 @@ import { ServiceService } from 'src/app/Service/service.service';
 })
 export class ProfiloVenditoreComponent {
 
-  constructor(public auth: AuthService, private service: ServiceService, private router: Router){}
+  constructor(public auth: AuthService, private service: ServiceService, private router: Router, private route: ActivatedRoute){}
 
   prodotti: Prodotto[] = [];
+  utente: Utente = new Utente;
 
   ngOnInit(){
-    this.service.getProdottiByUserId(this.auth.getutenteCorrente().id.toString()).subscribe(pro => {
+    //dall'id pel prodotto ricevuto come parametro prendo il prodotto
+    let id: string = "";
+    id += this.route.snapshot.paramMap.get("id");
+
+    this.service.getUtente(id).subscribe(ute => this.utente = ute)
+
+    this.service.getProdottiByUserId(id).subscribe(pro => {
       this.prodotti = pro
     });
 

@@ -60,7 +60,7 @@
       <h4>Contatti:</h4>
       <p>Telefono: {{utente.telefono}}</p>
       <p>Email: {{utente.email}}</p>
-      <button mat-button><a href="profilo-venditore">Contatta L'utente</a></button>
+      <button mat-button (click)="prendiUtente(utente.id)">Contatta L'utente</button>
   </div>
 
 

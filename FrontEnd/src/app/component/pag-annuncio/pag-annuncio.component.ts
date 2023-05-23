@@ -31,12 +31,12 @@ export class PagAnnuncioComponent {
 
       //this.utente.id = this.prodotto.utente;
       //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
-    
+
     });
 
 
 
-    
+
 
     //this.recensioni = this.utente.recensioni;
     //this.service.getRecensioni(this.utente).subscribe(rec => this.recensioni = rec)
@@ -70,9 +70,10 @@ export class PagAnnuncioComponent {
     }
   }
 
-  //dato l'id dell'annuncio, va a quella pagina dell'annuncio
-  prendiAnnuncio(id: number) {
-    this.router.navigate(['/pag-annuncio', id]);
+  //dato l'id dell'utente, va a quella pagina del profilo del venditore
+  prendiUtente(id: number) {
+    this.router.navigate(['/profilo-venditore', id]);
   }
+
 
 }
