@@ -1,4 +1,2 @@
 - Utilizzare swagger per controllare il backend
-- Aggiungere nell'annuncio un aggancio per il profilo del venditore e un bottone per messaggiare al venditore
-- Fare un model di nome messaggio: titolo, messaggio, 
 - Fare get e post per la messaggistica

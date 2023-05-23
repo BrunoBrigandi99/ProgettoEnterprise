@@ -1,8 +1,10 @@
 /*PARTE SUPERIORE*/
 .container {
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
+  margin: 1%;
+  border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px;
 }
 
 .profile {
@@ -23,13 +25,14 @@
 }
 
 .dati{
-  margin-left: 150px;
+  display: inline-table;
+  margin-left: 100px;
   margin-right: 50px;
 }
 
 button{
-  margin-top: 90px;
   background-color: #007782;
+  margin-bottom: 50px;
 }
 
 a{
