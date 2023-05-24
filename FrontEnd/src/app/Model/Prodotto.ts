@@ -14,8 +14,10 @@ export class Prodotto{
     colore!: string;
     taglia!: string;
     
-    utente!: Utente;
+    //utente!: Utente;
     images!: Image[];
+    venditoreId!: number; 
+
   
 }
 

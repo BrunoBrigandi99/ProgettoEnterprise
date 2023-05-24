@@ -50,7 +50,7 @@ const routes: Routes = [
     {path: 'privacy', component: PrivacyComponent},
     {path: 'come-funziona', component: ComeFunzionaComponent},
 
-    {path: 'profilo-venditore', component: ProfiloVenditoreComponent},
+    {path: 'profilo-venditore/:id', component: ProfiloVenditoreComponent},
     {path: 'messaggio', component: MessaggioComponent},
   ]},
 

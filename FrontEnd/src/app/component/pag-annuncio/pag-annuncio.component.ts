@@ -29,6 +29,8 @@ export class PagAnnuncioComponent {
     this.service.getProdotto(id).subscribe(pro => {
       this.prodotto = pro
 
+      this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
+
       //this.utente.id = this.prodotto.utente;
       //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
 
@@ -48,10 +50,15 @@ export class PagAnnuncioComponent {
 
 
   //converte immagine per poter essere aperta nell'html
-  toUrl(im: ArrayBuffer){
-    const imageUrl = 'data:image/jpeg;base64,/9j/'+im;
-    return imageUrl;
+  toUrl(imgAB: ArrayBuffer){
+    const imgSt = new String(imgAB)
+    
+    if (imgSt[0]==="i")
+      return 'data:image/png;base64,'+ imgAB
+    else //tecnicamente dovrei fare il controllo se inisiza con 4
+      return "data:image/jpeg;base64,/9j/"+imgAB
   }
+
 
   //modifica l'immagine principale con quelle secondarie
   ottieniFoto(numero: number){

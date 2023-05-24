@@ -5,36 +5,50 @@
       <img src="https://www.donnamoderna.com/content/uploads/2021/08/Donna-con-cellulare-830x625.jpg" alt="Foto profilo">
     </div>
     <div class="dati">
-      <h2>Nome: {{venditore.nome}}</h2>
-      <h2>Cognome: {{venditore.cognome}}</h2>
-      <h2>Email: {{venditore.email}}</h2>
-      <h2>Posizione: {{venditore.posizione}}</h2>
-      <h2>Telefono: {{venditore.telefono}}</h2>
+      <h2>Nome: {{utente.nome}}</h2>
+      <h2>Cognome: {{utente.cognome}}</h2>
+      <h2>Email: {{utente.email}}</h2>
+      <h2>Posizione: {{utente.posizione}}</h2>
+      <h2>Telefono: {{utente.telefono}}</h2>
     </div>
   </div>
   <button mat-button><a href="messaggio">Contatta</a></button>
+
 </div>
 
-<div class="container">
-    <h1>Articoli del venditore:</h1>
-    <div class="bordo">
+    
+<div class="bordo">
 
-      <div class="bordo-article" *ngFor="let prodotto of prodotti" >
-        <div (click)="prendiAnnuncio(prodotto.id)">
+  <h1>Altri prodotti di questo venditore:</h1>
+  <div class="bordo-article" *ngFor="let prodotto of prodotti" >
+    <div (click)="prendiAnnuncio(prodotto.id)">
 
-          <div *ngIf="prodotto.images && prodotto.images[1] !== undefined; else erroreFoto">
-            <img *ngIf="prodotto.images" [src]="prodotto.images[0].image" >
-          </div>
-          <ng-template #erroreFoto>
-            <img src="assets/NoImage.jpg">
-          </ng-template>
-
-          <h2>{{ prodotto.nomeProdotto }}</h2>
-          <p>Taglia: {{ prodotto.taglia }}</p>
-          <p>Prezzo: {{ prodotto.prezzo }} €</p>
-
-        </div>
-
+      <div *ngIf="prodotto.images && prodotto.images[1] !== undefined; else erroreFoto">
+        <img *ngIf="prodotto.images" [src]="prodotto.images[0].image" >
       </div>
+      <ng-template #erroreFoto>
+        <img src="assets/NoImage.jpg">
+      </ng-template>
+
+      <h2>{{ prodotto.nomeProdotto }}</h2>
+      <p>Taglia: {{ prodotto.taglia }}</p>
+      <p>Prezzo: {{ prodotto.prezzo }} €</p>
+
     </div>
+
   </div>
+</div>
+
+
+
+
+    <!--Recensioni del venditore
+  <h1>Recensioni di questo venditore:</h1>
+  <div class="bordo">
+      <div class="bordo-article" *ngFor="let rec of recensioni" >
+          <p>{{rec.autore}}</p>
+          <p>{{rec.valutazione}}</p>
+          <p>{{rec.commento}}
+      </div>
+  </div>
+  -->

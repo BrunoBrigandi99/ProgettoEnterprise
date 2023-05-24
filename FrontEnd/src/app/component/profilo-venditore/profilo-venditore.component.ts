@@ -35,8 +35,9 @@ export class ProfiloVenditoreComponent {
     this.router.navigate(['/pag-annuncio', id]);
   }
 
-  venditore = {
-    nome:"Cosimo", cognome:"Coso",email:"aaaa@.gmail.com", posizione:"Cosenza", telefono:"0965487"
-  }
+
+  // venditore = {
+  //   nome:"Cosimo", cognome:"Coso",email:"aaaa@.gmail.com", posizione:"Cosenza", telefono:"0965487"
+  // }
 
 }
