@@ -1,25 +1,43 @@
-<form [formGroup]="formRegistrazione" (ngSubmit)="onSubmit()">
+<div class="container">
+  <form [formGroup]="formRegistrazione" (ngSubmit)="onSubmit()">
 
-    <p>Nome:</p>
-    <input type="text" formControlName="nome">
+    <h1>REGISTRATI</h1>
 
-    <p>Cognome:</p>
-    <input type="text" formControlName="cognome">
+    <div class="input-container">
+      <p>Nome:</p>
+      <input type="text" formControlName="nome">
+    </div>
 
-    <p>Email:</p>
-    <input type="email" formControlName="email">
+    <div class="input-container">
+      <p class="cognome">Cognome:</p>
+      <input type="text" formControlName="cognome">
+    </div>
 
-    <p>Password:</p>
-    <input type="password" formControlName="password">
+    <div class="input-container">
+      <p class="mail">Email:</p>
+      <input type="email" formControlName="email">
+    </div>
 
-    <p>Posizione:</p>
-    <input type="text" formControlName="posizione">
+    <div class="input-container">
+      <p class="pw">Password:</p>
+      <input type="password" formControlName="password">
+    </div>
 
-    <p>Telefono</p>
-    <input type="text" formControlName="telefono">
+    <div class="input-container">
+      <p class="ruolo">Ruolo:</p>
+      <input type="text" placeholder="Seleziona" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
 
-    <br><br>
+    <br>
 
-    <button type="submit">Registrati</button>
+    <div class="bottone">
+      <button type="submit">Registrati</button>
+    </div>
 
-</form>
+  </form>
+</div>

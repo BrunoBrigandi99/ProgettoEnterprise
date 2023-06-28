@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52vh;
+}
+
+form {
+  border: 1px solid #ccc;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f8f8f8;
+
+}
+
+h1{
+  text-align: center;
+  font-weight: bolder;
+}
+
+.input-container {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-container p {
+  margin-bottom: 0;
+}
+
+
+.bottone{
+  padding-left: 35px;
+}
+
+button{
+  height: 50px;
+  width: 100px;
+  background-color: transparent;
+  color: black; /* si può modificare il colore del testo */
+  border-color: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #007782;
+  color: white;
+  border-radius: 5px;
+
+}

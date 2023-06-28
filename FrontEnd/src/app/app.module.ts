@@ -41,6 +41,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
 import { MessaggioComponent } from './component/messaggio/messaggio.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -94,6 +95,7 @@ import { MessaggioComponent } from './component/messaggio/messaggio.component';
     MatGridListModule,
     MatMenuModule,
     MatSidenavModule,
+    MatAutocompleteModule
 
   ],
   providers: [],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, map, startWith } from 'rxjs';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { Utente } from 'src/app/Model/Utente';
 import { ServiceService } from 'src/app/Service/service.service';
@@ -24,6 +25,23 @@ export class RegistratiComponent {
   constructor(private auth: AuthService, private service: ServiceService, private router: Router){}
 
   public utente: Utente = new Utente();
+
+  myControl = new FormControl('');
+  options: string[] = ['Acquirente', 'Venditore'];
+  filteredOptions: Observable<string[]> | undefined;
+
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
 
   onSubmit(){
     this.utente.nome = this.formRegistrazione.value.nome

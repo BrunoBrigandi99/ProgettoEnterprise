@@ -1,14 +1,19 @@
 <div class = "container">
   <form [formGroup]="formAccesso" (ngSubmit)="onSubmit()">
 
-    <p class="mail">Email:</p>
-    <input type="email" formControlName="email">
+    <h1>ACCEDI</h1>
 
+    <div class="input-container">
+      <p class="mail">Email:</p>
+      <input type="password" formControlName="email">
+    </div>
 
-    <p class="pw">Password:</p>
-    <input type="password" formControlName="password">
+    <div class="input-container">
+      <p class="pw">Password:</p>
+      <input type="password" formControlName="password">
+    </div>
 
-    <br><br>
+    <br>
 
     <div class="bottone">
       <button type="submit">Accedi</button>
