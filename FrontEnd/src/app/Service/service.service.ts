@@ -15,43 +15,7 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
 
-  /* ALESSANDRO BACKEND
-  //############################################################## PRODOTTO ##############################################################
-  //Funziona
-  getProdotti(): Observable <Prodotto[]>{
-    return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/findAll');
-  }
-
-  //Funziona
-  getProdotto(idProdotto: string): Observable <Prodotto> {
-    return this.http.get<Prodotto>('http://localhost:8080/prodotto-api/'+ idProdotto);
-  }
-
-  //FUNZIONA
-  setProdotto(prodotto: Prodotto): Observable <Prodotto>{
-    return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/save', prodotto);
-  }
-
-  //MANCA BACKEND
-  getProdottiByUserId(idUtente: String): Observable <Prodotto[]> {
-    return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/'+ idUtente);
-  }
-
-  //############################################################## RECENSIONE ##########################################################
-  getRecensione(idUtente: string): Observable <Recensione[]> {
-    return this.http.get<Recensione[]>("http://localhost:8080/utente-api/utenti/"+ idUtente +"/recensioni");
-  }
-
-  //############################################################## UTENTE ##############################################################
-  accedi(utente: Utente): Observable<Utente> {
-    return this.http.post<Utente>('http://localhost:8080/utente-api/accedi', utente);
-  }
-
-  registrati(utente: Utente): Observable <Utente>{
-    return this.http.post<Utente>('http://localhost:8080/utente-api/creaUtente', utente);
-  }*/
-
-
+ 
 
 
   // CHRISTIAN BACKEND
@@ -89,8 +53,43 @@ export class ServiceService {
     return this.http.get<Utente>("http://localhost:8080/utente-api/utenti/"+ idUtente );
   }
 
-  accedi(utente: Utente): Observable<Utente> {
-    return this.http.post<Utente>('http://localhost:8080/utente-api/accedi', utente);
+  accedi() {
+    //headers_object.append("Authorization", "Basic " + btoa("username:password"));     //conversione diretta di username e password
+
+
+    // Passato come primo parametro, al posto del body?
+    // const headers = new HttpHeaders({
+    //   Authorization: 'Basic UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
+    // });
+    // this.http.post('http://localhost:8080/login', headers).subscribe();
+
+
+    // Passato come primo parametro, al posto del body?, senza basic
+    // const headers = new HttpHeaders({
+    //   Authorization: 'UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
+    // });
+    // this.http.post('http://localhost:8080/login', headers).subscribe();
+
+
+    // Header dentro option
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     Authorization: 'Basic UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
+    //   })
+    // }
+    // this.http.post('http://localhost:8080/login',null, httpOptions).subscribe()
+
+    // Header dentro option senza basic
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     Authorization: 'Basic UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
+    //   })
+    // }
+    // this.http.post('http://localhost:8080/login',null, httpOptions).subscribe()
+
+
+
+
   }
 
   registrati(utente: Utente): Observable<Utente> {

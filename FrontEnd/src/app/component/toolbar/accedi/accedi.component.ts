@@ -22,20 +22,21 @@ export class AccediComponent {
   utente: Utente = new Utente();
 
   onSubmit(){
+    // this.utente.email = this.formAccesso.value.email
+    // this.utente.password = this.formAccesso.value.password
 
-    this.utente.email = this.formAccesso.value.email
-    this.utente.password = this.formAccesso.value.password
+    // this.service.accedi(this.utente).subscribe(
+    //   (response) => {
+    //     console.log('La richiesta HTTP è stata completata con successo:', response);
+    //     this.auth.accedi(response);
+    //     this.router.navigate(['/profilo']);
+    //   },
+    //   (error) => {
+    //     console.log('Si è verificato un errore durante la richiesta HTTP:', error);
+    //   }
+    // );
 
-    this.service.accedi(this.utente).subscribe(
-      (response) => {
-        console.log('La richiesta HTTP è stata completata con successo:', response);
-        this.auth.accedi(response);
-        this.router.navigate(['/profilo']);
-      },
-      (error) => {
-        console.log('Si è verificato un errore durante la richiesta HTTP:', error);
-      }
-    );
+    this.service.accedi()
 
   }
 
