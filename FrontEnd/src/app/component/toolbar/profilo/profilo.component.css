@@ -1,15 +1,14 @@
 /*PARTE SUPERIORE*/
 .container {
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
-}
-
-h1 {
-  text-align: center;
+  margin: 1%;
+  border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px;
 }
 
 .profile {
+  display: flex;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -23,6 +22,22 @@ h1 {
 
 .profile h2 {
   margin-top: 10px;
+}
+
+.dati{
+  display: inline-table;
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+button{
+  background-color: #007782;
+  margin-bottom: 50px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
 }
 
 .item-list {
@@ -43,7 +58,7 @@ h1 {
 }
 
 /*ARTICOLI IN VENDITA*/
-.bordo { border: 1px solid #ccc;  border-radius: 0.5rem; padding-bottom: 15px;  }
+/*.bordo { border: 1px solid #ccc;  border-radius: 0.5rem; padding-bottom: 15px;  }*/
 
 .bordo-article { display: inline-block; border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px; }
 

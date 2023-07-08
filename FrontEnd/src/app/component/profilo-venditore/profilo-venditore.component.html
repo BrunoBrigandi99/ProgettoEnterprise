@@ -23,8 +23,8 @@
   <div class="bordo-article" *ngFor="let prodotto of prodotti" >
     <div (click)="prendiAnnuncio(prodotto.id)">
 
-      <div *ngIf="prodotto.images && prodotto.images[1] !== undefined; else erroreFoto">
-        <img *ngIf="prodotto.images" [src]="prodotto.images[0].image" >
+      <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
+        <img *ngIf="prodotto.images[0]" src="{{toUrl(prodotto.images[0].image)}}" >
       </div>
       <ng-template #erroreFoto>
         <img src="assets/NoImage.jpg">

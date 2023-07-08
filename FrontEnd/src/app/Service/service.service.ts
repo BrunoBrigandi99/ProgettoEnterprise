@@ -1,11 +1,16 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { map, tap } from 'rxjs/operators';
 
 import { Prodotto } from '../Model/Prodotto';
 import { Utente } from '../Model/Utente';
 import { Recensione } from '../Model/Recensione';
 import { ProdottoBackend } from '../Model/ProdottoBackend';
+import { Messaggio } from '../Model/Messaggio';
+import { ReturnStatement } from '@angular/compiler';
+import { AuthService } from '../Auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +18,7 @@ import { ProdottoBackend } from '../Model/ProdottoBackend';
 export class ServiceService {
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService ) { }
 
  
 
@@ -28,7 +33,7 @@ export class ServiceService {
 
   //FUNZIONA
   getProdotti(): Observable <Prodotto[]>{
-    return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti');
+    return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti')
   }
 
   setProdotto(prodotto: ProdottoBackend): Observable <Prodotto>{
@@ -37,14 +42,16 @@ export class ServiceService {
 
   //
   getProdottiByUserId(idUtente: String): Observable <Prodotto[]> {
-    return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/'+ idUtente);
+    return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti/utente/'+ idUtente);
   }
 
 
 
   //############################################################## RECENSIONE ##############################################################
+
+  //Dato l'id di un venditore restituisce tutte le recensioni che ha ricevuto quel venditore
   getRecensione(idUtente: string): Observable <Recensione[]> {
-    return this.http.get<Recensione[]>("http://localhost:8080/utente-api/utenti/"+ idUtente +"/recensioni");
+    return this.http.get<Recensione[]>("http://localhost:8080/recensione-api/recensioni/"+ idUtente);
   }
 
   //############################################################## UTENTE ##############################################################
@@ -53,49 +60,31 @@ export class ServiceService {
     return this.http.get<Utente>("http://localhost:8080/utente-api/utenti/"+ idUtente );
   }
 
-  accedi() {
-    //headers_object.append("Authorization", "Basic " + btoa("username:password"));     //conversione diretta di username e password
+  getUtenteByEmail(emailUtente: string): Observable <Utente> {
+    //let headers = new HttpHeaders( { Authorization: "Bearer "+this.auth.getAccessToken()} )
+    //return this.http.get<Utente>("http://localhost:8080/utente-api/utente/"+ emailUtente, { headers: headers});
+    return this.http.get<Utente>("http://localhost:8080/utente-api/utente/"+ emailUtente);
+  }
 
-
-    // Passato come primo parametro, al posto del body?
-    // const headers = new HttpHeaders({
-    //   Authorization: 'Basic UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
-    // });
-    // this.http.post('http://localhost:8080/login', headers).subscribe();
-
-
-    // Passato come primo parametro, al posto del body?, senza basic
-    // const headers = new HttpHeaders({
-    //   Authorization: 'UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
-    // });
-    // this.http.post('http://localhost:8080/login', headers).subscribe();
-
-
-    // Header dentro option
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     Authorization: 'Basic UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
-    //   })
-    // }
-    // this.http.post('http://localhost:8080/login',null, httpOptions).subscribe()
-
-    // Header dentro option senza basic
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     Authorization: 'Basic UGFwZXJpbm9AZW1haWwuaXQ6cGFzc3dk'
-    //   })
-    // }
-    // this.http.post('http://localhost:8080/login',null, httpOptions).subscribe()
-
-
-
-
+  async accedi(encodedStr: string): Promise<Observable<any>>{
+    //console.log(encodedStr)
+    let headers = new HttpHeaders( { Authorization: "Basic "+encodedStr } )
+    return this.http.post('http://localhost:8080/login', null, { headers: headers } )
   }
 
   registrati(utente: Utente): Observable<Utente> {
     return this.http.post<Utente>('http://localhost:8080/utente-api/salva', utente);
   }
 
+
+  
+  
+  //############################################################## MESSAGGI ##############################################################
+
+  getMessaggi(idUtente: string ): Observable <Messaggio[]>{
+    return this.http.get<Messaggio[]>("http://localhost:8080/messaggio-api/messaggi/utente/"+ idUtente)
+
+  }
 
 
 

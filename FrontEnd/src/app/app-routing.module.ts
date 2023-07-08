@@ -21,6 +21,7 @@ import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiung
 import { MessaggisticaComponent } from './component/toolbar/messaggistica/messaggistica.component';
 import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
 import { MessaggioComponent } from './component/messaggio/messaggio.component';
+import { ChatComponent } from './component/chat/chat.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
@@ -28,6 +29,7 @@ const routes: Routes = [
     {path: 'home', component: HomeComponent},
 
     {path: 'messaggistica', component: MessaggisticaComponent},
+    {path: 'chat', component: ChatComponent},
 
     {path: 'profilo', component: ProfiloComponent},
     {path: 'accedi', component: AccediComponent},

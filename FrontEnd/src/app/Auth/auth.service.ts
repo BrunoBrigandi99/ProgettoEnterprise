@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Utente } from '../Model/Utente';
-import { ServiceService } from '../Service/service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private service: ServiceService) { }
+  constructor() { }
 
+  public authorization = ""
   private utenteCorrente: Utente = new Utente();
 
 
@@ -29,6 +29,15 @@ export class AuthService {
   getutenteCorrente(): Utente {
     return this.utenteCorrente;
   }
+
+  getToken(): string {
+    return this.authorization
+  }
+
+  public setToken(token: string): void {
+    this.authorization = token;
+  }
+  
 
   
 }

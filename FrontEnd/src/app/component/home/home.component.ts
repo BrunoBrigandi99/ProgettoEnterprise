@@ -26,8 +26,9 @@ export class HomeComponent {
     
     if (imgSt[0]==="i")
       return 'data:image/png;base64,'+ imgAB
-    else //tecnicamente dovrei fare il controllo se inisiza con 4
-      return "data:image/jpeg;base64,/9j/"+imgAB
+    else //tecnicamente dovrei fare il controllo se inizia con 4
+      //return "data:image/jpeg;base64,/9j/"+imgAB //aggiungi annunci dovrebbe salvare senza /9j/
+      return "data:image/jpeg;base64,"+imgAB //queste statiche sono state salvate in questo modo, 
   }
 
 

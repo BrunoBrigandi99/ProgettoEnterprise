@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -42,6 +44,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
 import { MessaggioComponent } from './component/messaggio/messaggio.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ChatComponent } from './component/chat/chat.component';
+import { JsonParser, LoggingInterceptor } from './Interceptor/logging.interceptor';
+
 
 
 
@@ -73,6 +78,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MessaggisticaComponent,
     ProfiloVenditoreComponent,
     MessaggioComponent,
+    ChatComponent,
+   
 
   ],
   imports: [
@@ -82,6 +89,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
 
     MatToolbarModule,
     MatIconModule,
@@ -98,7 +106,15 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatAutocompleteModule
 
   ],
-  providers: [],
+  providers: [
+
+    { provide: JsonParser, useClass: LoggingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+
+
+
+  
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,22 +21,21 @@ export class AccediComponent {
 
   utente: Utente = new Utente();
 
-  onSubmit(){
-    // this.utente.email = this.formAccesso.value.email
-    // this.utente.password = this.formAccesso.value.password
+  async onSubmit(){
 
-    // this.service.accedi(this.utente).subscribe(
-    //   (response) => {
-    //     console.log('La richiesta HTTP è stata completata con successo:', response);
-    //     this.auth.accedi(response);
-    //     this.router.navigate(['/profilo']);
-    //   },
-    //   (error) => {
-    //     console.log('Si è verificato un errore durante la richiesta HTTP:', error);
-    //   }
-    // );
+    let str = this.formAccesso.value.email+":"+this.formAccesso.value.password
+    //let str = "Paperino@email.it:passwd";
+    let encodedStr = btoa(str);
+    (await (this.service.accedi(encodedStr))).subscribe(
+      (response) => {
+        this.service.getUtenteByEmail(this.formAccesso.value.email).subscribe(
+          (response) => {
+            this.router.navigate(['/profilo'])
 
-    this.service.accedi()
+          }
+        )
+      }
+    )
 
   }
 

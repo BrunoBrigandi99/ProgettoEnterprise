@@ -58,7 +58,7 @@ a{
 }
 
 /*ARTICOLI IN VENDITA*/
-.bordo { border: 1px solid #ccc;  border-radius: 0.5rem; padding-bottom: 15px;  }
+/*.bordo { border: 1px solid #ccc;  border-radius: 0.5rem; padding-bottom: 15px;  }*/
 
 .bordo-article { display: inline-block; border: 1px solid #ccc; border-radius: 0.5rem; padding: 20px; margin-left: 15px; margin-top: 15px; }
 

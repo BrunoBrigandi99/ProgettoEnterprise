@@ -16,7 +16,7 @@ export class PagAnnuncioComponent {
 
   constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router ) {}
 
-  prodotto: Prodotto = new Prodotto();    //va modificato backend, deve ricevere un prodotto enon un array di prodotti, va modificato anche service e html
+  prodotto: Prodotto = new Prodotto();    //va modificato backend, deve ricevere un prodotto e non un array di prodotti, va modificato anche service e html
   utente: Utente = new Utente();
   recensioni: Recensione[] = [];
   altriProd: Prodotto[] = [];
@@ -55,8 +55,9 @@ export class PagAnnuncioComponent {
     
     if (imgSt[0]==="i")
       return 'data:image/png;base64,'+ imgAB
-    else //tecnicamente dovrei fare il controllo se inisiza con 4
-      return "data:image/jpeg;base64,/9j/"+imgAB
+    else //tecnicamente dovrei fare il controllo se inizia con 4
+      //return "data:image/jpeg;base64,/9j/"+imgAB //aggiungi annunci dovrebbe salvare senza /9j/
+      return "data:image/jpeg;base64,"+imgAB //queste statiche sono state salvate in questo modo, 
   }
 
 
