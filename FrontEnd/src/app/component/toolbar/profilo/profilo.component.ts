@@ -11,9 +11,6 @@ import { ServiceService } from 'src/app/Service/service.service';
   styleUrls: ['./profilo.component.css']
 })
 export class ProfiloComponent {
-aggiungiAnnuncio() {
-throw new Error('Method not implemented.');
-}
 
   constructor(public auth: AuthService, private service: ServiceService, private router: Router){}
 
@@ -45,6 +42,11 @@ throw new Error('Method not implemented.');
   //dato l'id dell'annuncio, va a quella pagina dell'annuncio
   prendiAnnuncio(id: number) {
     this.router.navigate(['/pag-annuncio', id]);
+  }
+
+  aggiungiAnnuncio(){
+    this.router.navigate(['/aggiungi-annuncio']);
+    
   }
 
 }

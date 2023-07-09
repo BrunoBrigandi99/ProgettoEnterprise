@@ -37,7 +37,7 @@ export class ServiceService {
   }
 
   setProdotto(prodotto: ProdottoBackend): Observable <Prodotto>{
-    return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/salva', prodotto);
+    return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/salvaWeb', prodotto);
   }
 
   //
