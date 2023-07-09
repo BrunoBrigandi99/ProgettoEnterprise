@@ -53,7 +53,19 @@ export class AggiungiAnnuncioComponent {
     reader.onload = () => {
 
       this.formato = reader.result as ArrayBuffer
-      this.formato = this.formato.slice(27);
+
+      const imgSt = new String(this.formato)
+
+      console.log(imgSt.substring(0, 20))
+
+      if (imgSt.startsWith("data:image/png;base64")) {
+        console.log("png")
+        this.formato = this.formato.slice(22);
+      } 
+      if (imgSt.startsWith("data:image/jpeg;base64")) {
+        console.log("jpeg")
+        this.formato = this.formato.slice(23);
+      }
 
       const image: ImageBackend = new ImageBackend();
       image.image = this.formato;
@@ -62,11 +74,20 @@ export class AggiungiAnnuncioComponent {
     };
   }
 
-  toUrl(im: ArrayBuffer){
- 
-    const imageUrl = 'data:image/jpeg;base64,/9j/'+im;
-    return imageUrl;
+  //converte immagine per poter essere aperta nell'html
+  toUrl(imgAB: ArrayBuffer){
+    const imgSt = new String(imgAB)
+    if (imgSt[0]==="i")
+      return 'data:image/png;base64,'+ imgAB
+    else
+      return "data:image/jpeg;base64,"+imgAB 
   }
+
+  // toUrl(im: ArrayBuffer){
+ 
+  //   const imageUrl = 'data:image/jpeg;base64,/9j/'+im;
+  //   return imageUrl;
+  // }
 
 
   prodottoBackend: ProdottoBackend = new ProdottoBackend();
@@ -79,26 +100,24 @@ export class AggiungiAnnuncioComponent {
     // this.prodotto.condizione = this.formAggAnn.value.condizione;
     // this.prodotto.brand = this.formAggAnn.value.brand;
     // this.prodotto.colore = this.formAggAnn.value.colore;
-    // this.prodotto.descrizione = this.formAggAnn.value.descrizione;
+    
     // this.prodotto.taglia = this.formAggAnn.value.taglia;
     //this.prodotto.immagini = this.images;
 
 
     this.prodottoBackend.nomeProdotto = this.formAggAnn.value.titolo;
     this.prodottoBackend.prezzo = this.formAggAnn.value.prezzo;
-    this.prodottoBackend.venditoreId = 1;
+    this.prodotto.descrizione = this.formAggAnn.value.descrizione;
+    this.prodottoBackend.venditoreId = this.auth.getUtenteCorrente().id;
 
     this.prodottoBackend.images = this.images;
 
-    console.log(this.images[0].image)
-
-    this.service.setProdotto(this.prodottoBackend).subscribe(
+    this.service.setProdotto(this.prodottoBackend).subscribe( 
       (response) => {
-        console.log('La richiesta HTTP è stata completata con successo:', response);
-        this.router.navigate(['/pag-annuncio', response.id]);
+        //this.router.navigate(['/pag-annuncio', response.id]);
       },
       (error) => {
-        console.log('Si è verificato un errore durante la richiesta HTTP:', error);
+        //console.log('Si è verificato un errore durante la richiesta HTTP:', error);
       }
     );
 
