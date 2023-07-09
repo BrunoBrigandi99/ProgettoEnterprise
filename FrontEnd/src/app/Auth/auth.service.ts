@@ -20,7 +20,7 @@ export class AuthService {
   esci(){
     this.utenteCorrente = new Utente();
   }
-  
+
   // Restituisce true se utenteCorrente è definito, false altrimenti
   isAuthenticated(): boolean {
     return !!this.utenteCorrente;
@@ -38,7 +38,7 @@ export class AuthService {
   public setToken(token: string): void {
     this.authorization = token;
   }
-  
 
-  
+
+
 }

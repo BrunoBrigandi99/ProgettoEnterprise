@@ -8,9 +8,15 @@
     </div>
     -->
     <div class="dati">
-      <h2>Nome: {{this.auth.getUtenteCorrente().nome}}</h2>
-      <h2>Cognome: {{this.auth.getUtenteCorrente().cognome}}</h2>
-      <h2>Email: {{this.auth.getUtenteCorrente().email}}</h2>
+      <h2>Nome:
+        <p class="a">{{this.auth.getUtenteCorrente().nome}}</p>
+      </h2>
+      <h2>Cognome:
+        <p class="b">{{this.auth.getUtenteCorrente().cognome}}</p>
+      </h2>
+      <h2>Email:
+        <p class="a">{{this.auth.getUtenteCorrente().email}}</p>
+      </h2>
 
       <!--<h2>Telefono: {{this.auth.getutenteCorrente().telefono}}</h2>-->
     </div>
@@ -44,7 +50,7 @@
       <button (click)="aggiungiAnnuncio()">Aggiungi un annuncio</button>
     </div>
   </div>
-  
+
 
 
 
@@ -65,7 +71,7 @@
         <h2>{{ prodotto.nomeProdotto }}</h2>
         <p>Taglia: {{ prodotto.taglia }}</p>
         <p>Prezzo: {{ prodotto.prezzo }} €</p>
-      
+
       </div>
 
     </div>
@@ -87,4 +93,3 @@
     <p>Non hai recensioni al momento.</p>
   </div>
 </div>
-  

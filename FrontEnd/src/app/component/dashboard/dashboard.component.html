@@ -17,13 +17,14 @@
     </button>
 
     <!--MESSAGGISTICA-->
+
     <!--usare matBadge per prendere in modo dinamico il numero delle notifiche-->
 
-    <button mat-icon-button *ngIf="service.badgeValue > 0" (click)="service.azzeraNumero()" routerLink="messaggistica">
+    <!-- <button mat-icon-button *ngIf="service.badgeValue > 0" (click)="service.azzeraNumero()" routerLink="chat">
       <mat-icon matBadge="{{service.badgeValue}}" matBadgeColor="warn">email</mat-icon>
-    </button>
+    </button> -->
 
-    <button mat-icon-button *ngIf="service.badgeValue == 0" routerLink="chat" > <!--era messaggistica--> 
+    <button mat-icon-button routerLink="chat" >
       <mat-icon>email</mat-icon>
     </button>
 
@@ -37,15 +38,15 @@
         <mat-icon>manage_accounts</mat-icon>
         <span>Profilo</span>
       </button>
-      <button class="Bprofilo" mat-menu-item routerLink="accedi">
+      <button class="Bprofilo" mat-menu-item routerLink="accedi" *ngIf="this.auth.isAuthenticated()">
         <mat-icon>manage_accounts</mat-icon>
         <span>Accedi</span>
       </button>
-      <button class="Bprofilo" mat-menu-item routerLink="registrati">
+      <button class="Bprofilo" mat-menu-item routerLink="registrati" *ngIf="this.auth.isAuthenticated()">
         <mat-icon>manage_accounts</mat-icon>
         <span>Registrati</span>
       </button>
-      <button class="Bprofilo" mat-menu-item routerLink="home">
+      <button class="Bprofilo" mat-menu-item routerLink="home" (click)="this.auth.esci()">
         <mat-icon>logout</mat-icon>
         <span>Esci</span>
       </button>
@@ -59,28 +60,10 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<!--BOTTONI FILTRI-->
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Categorie</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-list class="filtro">
-      <button role="listitem" routerLink="">Abbigliamento</button>
-      <button role="listitem" routerLink="">Scarpe</button>
-      <button role="listitem" routerLink="">Accessori</button>
-      <button role="listitem" routerLink="">Elettronica</button>
-      <button role="listitem" routerLink="">Libri</button>
-      <button role="listitem" routerLink="">Sport</button>
-      <button role="listitem" routerLink="">Casa</button>
-    </mat-list>
-  </mat-card-content>
-
   <mat-card-content>
     <router-outlet></router-outlet>
   </mat-card-content>
 
-</mat-card>
 
 <!--FOOTER-->
 <footer>

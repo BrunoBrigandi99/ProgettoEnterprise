@@ -1,17 +1,18 @@
-body{
+.statica{
   text-align: center;
   justify-content: center;
   margin: 20%;
+  font-size: large;
 }
 
-h1{
+.titolo{
+  text-align: center;
+  font-style: oblique;
   font-weight: bold;
   font-size: 1cm;
 }
 
-p {
-  color: black;
-  font-family: Arial, Sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
+.corpo p{
+  margin: 10px;
 }
+
