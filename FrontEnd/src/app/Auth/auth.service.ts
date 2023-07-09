@@ -23,7 +23,7 @@ export class AuthService {
   
   // Restituisce true se utenteCorrente è definito, false altrimenti
   isAuthenticated(): boolean {
-    return !this.utenteCorrente;
+    return !!this.utenteCorrente;
   }
 
   // Restituisce l'utente corrente

@@ -91,7 +91,7 @@ export class PagAnnuncioComponent {
 
 
   addCart(prodottoId: number ){
-    if (!!this.auth.isAuthenticated()){
+    if (!this.auth.isAuthenticated()){
       console.log("entrato")
       this.router.navigate(['accedi']);
     }
