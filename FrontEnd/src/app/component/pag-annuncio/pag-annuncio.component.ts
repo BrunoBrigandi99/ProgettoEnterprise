@@ -108,11 +108,28 @@ export class PagAnnuncioComponent {
     this.prodottoAggiunto = true;
   }
 
+
+  confermaEliminazione(prodottoId: number) {
+    if (confirm("Sei sicuro di voler eliminare l'annuncio?")) {
+      this.eliminaAnnuncio(prodottoId);
+    }
+  }
+
   aggiungiAnnuncio(){
+  
+    
 
   }
 
-  eliminaAnnuncio(prodottoId: number){}
+  eliminaAnnuncio(prodottoId: number){
+    this.service.deleteProdotto(prodottoId).subscribe(
+      (response) => {
+        this.router.navigate(['profilo']);
+      }
+      
+    )
+    
+  }
   
   modificaAnnuncio(prodottoId: number){
 

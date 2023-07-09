@@ -27,17 +27,21 @@
             <h3>{{prodotto.nomeProdotto}}</h3>
             <p>Prezzo: €{{prodotto.prezzo}}</p>
             <button (click)="eliminaArticolo(i)">Elimina</button>
+            <button (click)="acquistaSubito(i)">Acquista subito</button>
           </div>
         </div>
      
       </div>
     </div>
 
+    <h1 *ngIf="prodotti.length === 0">Non hai nessun prodotto nel carrello</h1>
+
+
 
     <!-- Pulsante per effettuare il checkout -->
     <div id="checkout">
       <p>Totale: €{{totale}}</p>
-      <button routerLink="" [routerLinkActive]="'active'">Effettua il checkout</button>
+      <button (click)="acquistaSubitoTutti()" >Effettua il checkout</button>
     </div>
   </body>
 </html>

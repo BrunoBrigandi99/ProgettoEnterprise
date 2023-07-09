@@ -43,7 +43,7 @@
     <p *ngIf="prodottoAggiunto">Il prodotto è stato aggiunto</p>
 
     <!-- Mostra i bottoni solo se l'ID del prodotto corrisponde all'ID dell'utente corrente -->
-    <button *ngIf="prodotto.venditoreId === auth.getUtenteCorrente().id" (click)="eliminaAnnuncio(prodotto.id)">Elimina annuncio</button>
+    <button *ngIf="prodotto.venditoreId === auth.getUtenteCorrente().id" (click)="confermaEliminazione(prodotto.id)">Elimina annuncio</button>
     <button *ngIf="prodotto.venditoreId === auth.getUtenteCorrente().id" (click)="modificaAnnuncio(prodotto.id)">Modifica annuncio</button>
 
   </div>

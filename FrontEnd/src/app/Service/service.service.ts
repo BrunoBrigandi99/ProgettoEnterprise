@@ -40,6 +40,11 @@ export class ServiceService {
     return this.http.post<Prodotto>('http://localhost:8080/prodotto-api/salvaWeb', prodotto);
   }
 
+  deleteProdotto(prodottoId: number){
+    return this.http.delete('http://localhost:8080/prodotto-api/prodotti/'+ prodottoId);
+
+  }
+
   //
   getProdottiByUserId(idUtente: String): Observable <Prodotto[]> {
     return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti/utente/'+ idUtente);

@@ -44,4 +44,38 @@ export class CarrelloComponent {
     this.prodotti.splice(index, 1)
     this.auth.carrello.splice(index, 1)
   }
+
+  acquistaSubito(index: number){
+    if (confirm("Sei sicuro di voler acquistare?")) {
+      this.service.deleteProdotto(this.prodotti[index].id).subscribe(
+        (response) => {
+          this.eliminaArticolo(index)
+        }
+      )
+    }
+  }
+
+  acquistaSubitoTutti(){
+    let errore: Boolean = false;
+    if (confirm("Sei sicuro di volerli acquistare tutti?")) {
+      this.prodotti.forEach((prodotto, index) => {
+        this.service.deleteProdotto(prodotto.id).subscribe(
+          (error) => { errore = true }
+        )
+      })
+
+      if (!errore){
+        this.auth.carrello.forEach((prodotto, index) => {
+          this.auth.carrello = []
+          this.prodotti = []
+          this.totale = 0
+        })
+      
+
+    }
+      
+    }
+  }
+    
+  
 }
