@@ -2,6 +2,8 @@
 
 .spazio-imm{ display: inline-block; margin: 1%; width: 60%; height: 615px; padding: 1%;                 border: 1px solid #ccc; border-radius: 0.5rem; }
 .testo     { display: inline-block; margin: 1%; width: 30%; height: 615px; padding: 1%;                 border: 1px solid #ccc; border-radius: 0.5rem; }
+.testo .titolo{font-size: large; margin-top: 30px;}
+.testo .des{ font-weight: bold; margin-bottom: 10px;}
 
 .imm1{ width: 96%; height: 450px; object-fit: cover; padding: 1%; margin: 1%;}
 .imm2{ width: 12%; height: 100px; object-fit: cover; object-position: center center; padding: 1%; }
@@ -22,7 +24,14 @@
 img { width: 200px; height: 200px; }
 
 button{
-  background-color: #007782;
+  height: 50px;
+  width: 100px;
+  background-color:  #007782;
+  color: white; /* si può modificare il colore del testo */
+  border-color: transparent;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  margin-right: 5px;
 }
 
 a{

@@ -20,19 +20,53 @@
   object-fit: cover;
 }
 
+h1{
+  font-weight: bold;
+}
+
 .profile h2 {
   margin-top: 10px;
 }
 
-.dati{
-  display: inline-table;
-  margin-left: 100px;
-  margin-right: 50px;
+.profile{
+  text-align: center;
+  justify-content: center;
 }
 
+.dati h2{
+  display: flex;
+  padding-right: 300px;
+  font-weight: 100;
+}
+
+.a{
+  /* display: flex; */
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+.b{
+  /* display: flex; */
+  margin-left: 17px;
+  font-weight: bold;
+}
+
+.c{
+  /* display: flex; */
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+
 button{
-  background-color: #007782;
-  margin-bottom: 50px;
+  height: 50px;
+  width: 100px;
+  background-color:  #007782;
+  color: white; /* si può modificare il colore del testo */
+  border-color: transparent;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  margin-right: 5px;
 }
 
 a{

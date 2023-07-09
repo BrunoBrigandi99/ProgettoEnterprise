@@ -1,14 +1,14 @@
 <!--CARD DINAMICHE-->
 
 
-  
+
 <div class="bordo">
   <h1>Articoli più richiesti:</h1>
 
-  
+
   <div class="bordo-article" *ngFor="let prodotto of prodotti" >
     <div (click)="prendiAnnuncio(prodotto.id)">
-    
+
       <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
         <img *ngIf="prodotto.images[0]" src="{{toUrl(prodotto.images[0].image)}}" >
       </div>
@@ -16,12 +16,12 @@
         <img src="assets/NoImage.jpg">
       </ng-template>
 
-      <h2>{{ prodotto.nomeProdotto }}</h2>
+      <h1 style="font-weight: bold;">{{ prodotto.nomeProdotto }}</h1>
       <!--<p>Taglia: {{ prodotto.taglia }}</p>-->
-      <p>Prezzo: {{ prodotto.prezzo }} €</p>   
+      <p>Prezzo: {{ prodotto.prezzo }} €</p>
 
     </div>
- 
+
   </div>
 </div>
 
