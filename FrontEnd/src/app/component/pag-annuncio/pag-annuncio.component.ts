@@ -23,6 +23,8 @@ export class PagAnnuncioComponent {
   altriProd: Prodotto[] = [];
   prodottoAggiunto: boolean = false;
 
+  prodotti: Prodotto[] = []
+
 
   ngOnInit() {
     //dall'id pel prodotto ricevuto come parametro prendo il prodotto
@@ -36,10 +38,10 @@ export class PagAnnuncioComponent {
 
       //ottengo tutte le recensioni di questo venditore
       this.service.getRecensione(this.prodotto.venditoreId.toString()).subscribe(rec => this.recensioni = rec)
-     
 
-      //this.utente.id = this.prodotto.utente;
-      //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
+      //ottengo tutti i prodotti di questo venditore
+      this.service.getProdottiByUserId(this.prodotto.id.toString()).subscribe(pro => this.prodotti = pro)
+     
 
     });
 
@@ -90,12 +92,21 @@ export class PagAnnuncioComponent {
   }
 
 
+
+  //dato l'id dell'annuncio, va a quella pagina dell'annuncio
+  prendiAnnuncio(id: number) {
+    this.router.navigate(['/pag-annuncio', id]);
+  }
+
+
   addCart(prodottoId: number ){
     if (!this.auth.isAuthenticated()){
-      console.log("entrato")
       this.router.navigate(['accedi']);
     }
-    this.auth.carrello.push(prodottoId)
+
+    if (!this.auth.carrello.includes(prodottoId)) {
+      this.auth.carrello.push(prodottoId)
+    }
     this.prodottoAggiunto = true;
   }
 
