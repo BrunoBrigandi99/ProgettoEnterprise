@@ -1,47 +1,81 @@
 <!--Dati del venditore-->
 <div class="container">
-  <h1>Profilo Venditore</h1>
+  <h1>Il mio profilo:</h1>
   <div class="profile">
+    <!--
     <div>
       <img src="https://www.donnamoderna.com/content/uploads/2021/08/Donna-con-cellulare-830x625.jpg" alt="Foto profilo">
     </div>
+    -->
     <div class="dati">
-      <h2>Nome: {{this.auth.getutenteCorrente().nome}}</h2>
-      <h2>Cognome: {{this.auth.getutenteCorrente().cognome}}</h2>
-      <h2>Email: {{this.auth.getutenteCorrente().email}}</h2>
-      <h2>Telefono: {{this.auth.getutenteCorrente().telefono}}</h2>
+      <h2>Nome: {{this.auth.getUtenteCorrente().nome}}</h2>
+      <h2>Cognome: {{this.auth.getUtenteCorrente().cognome}}</h2>
+      <h2>Email: {{this.auth.getUtenteCorrente().email}}</h2>
+
+      <!--<h2>Telefono: {{this.auth.getutenteCorrente().telefono}}</h2>-->
     </div>
+
   </div>
-  <button mat-button><a href="messaggio">Contatta</a></button>
-
+  <button mat-button><a>Modifica Profilo</a></button>
+  <button mat-button><a>Elimina Profilo</a></button>
 </div>
-
 
 
 <!--Annunci del venditore-->
-<div class="bordo">
-  <h1>I miei annunci:</h1>
-  <div class="bordo-article" *ngFor="let prodotto of prodotti" >
-    <div (click)="prendiAnnuncio(prodotto.id)">
+<div class="container">
 
-      <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
-        <img *ngIf="prodotto.images[0]" src="{{toUrl(prodotto.images[0].image)}}" >
+  <div class="bordo">
+    <h1>I miei annunci:</h1>
+    <div class="bordo-article" *ngFor="let prodotto of prodotti">
+      <div (click)="prendiAnnuncio(prodotto.id)">
+        <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
+          <img *ngIf="prodotto.images[0]" src="{{toUrl(prodotto.images[0].image)}}" >
+        </div>
+        <ng-template #erroreFoto>
+          <img src="assets/NoImage.jpg">
+        </ng-template>
+        <h2>{{ prodotto.nomeProdotto }}</h2>
+        <p>Taglia: {{ prodotto.taglia }}</p>
+        <p>Prezzo: {{ prodotto.prezzo }} €</p>
       </div>
-      <ng-template #erroreFoto>
-        <img src="assets/NoImage.jpg">
-      </ng-template>
+    </div>
+    <div class="bordo-article" *ngIf="prodotti.length === 0">
+      <p>Non ci sono annunci al momento.</p>
+      <button (click)="aggiungiAnnuncio()">Aggiungi un annuncio</button>
+    </div>
+  </div>
+  
 
-      <h2>{{ prodotto.nomeProdotto }}</h2>
-      <p>Taglia: {{ prodotto.taglia }}</p>
-      <p>Prezzo: {{ prodotto.prezzo }} €</p>
+
+
+
+  <!--
+  <div class="bordo">
+    <h1>I miei annunci:</h1>
+    <div class="bordo-article" *ngFor="let prodotto of prodotti" >
+      <div (click)="prendiAnnuncio(prodotto.id)">
+
+        <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
+          <img *ngIf="prodotto.images[0]" src="{{toUrl(prodotto.images[0].image)}}" >
+        </div>
+        <ng-template #erroreFoto>
+          <img src="assets/NoImage.jpg">
+        </ng-template>
+
+        <h2>{{ prodotto.nomeProdotto }}</h2>
+        <p>Taglia: {{ prodotto.taglia }}</p>
+        <p>Prezzo: {{ prodotto.prezzo }} €</p>
+      
+      </div>
 
     </div>
-
   </div>
+  -->
 </div>
 
 <!--Recensioni del venditore-->
-  <h1>Recensioni di questo venditore:</h1>
+<div class="container">
+  <h1>Le mie recensioni:</h1>
   <div class="bordo">
       <div class="bordo-article" *ngFor="let rec of recensioni" >
           <p>{{rec.autore}}</p>
@@ -49,4 +83,5 @@
           <p>{{rec.commento}}
       </div>
   </div>
+</div>
   

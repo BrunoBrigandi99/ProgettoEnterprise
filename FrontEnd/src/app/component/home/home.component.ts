@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 
 import { Prodotto } from 'src/app/Model/Prodotto';
+import { AuthService } from 'src/app/Auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -37,8 +38,7 @@ export class HomeComponent {
     this.router.navigate(['/pag-annuncio', id]);
   }
 
-  carrello() {
-    this.router.navigate(['/carrello']);
-  }
+
+
 
 }

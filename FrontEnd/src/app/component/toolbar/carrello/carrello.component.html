@@ -11,29 +11,32 @@
     </div>
 
     <!-- Lista dei prodotti nel carrello -->
-    <div id="cart-items">
-      <div class="cart-item">
-        <img src="https://via.placeholder.com/100x100.png" alt="Prodotto 1">
-        <div>
-          <h3>Prodotto 1</h3>
-          <p>Prezzo: €10</p>
-          <button>Elimina</button>
-        </div>
-      </div>
 
-      <div class="cart-item">
-        <img src="https://via.placeholder.com/100x100.png" alt="Prodotto 2">
-        <div>
-          <h3>Prodotto 2</h3>
-          <p>Prezzo: €20</p>
-          <button>Elimina</button>
+    <div  *ngFor="let prodotto of prodotti; let i = index">
+      <div id="cart-items">
+        <div class="cart-item">
+
+          <div *ngIf="prodotto.images && prodotto.images[0] !== undefined; else erroreFoto">
+            <img *ngIf="prodotto.images[0]" src="{{toUrl(prodotto.images[0].image)}}" >
+          </div>
+          <ng-template #erroreFoto>
+            <img src="assets/NoImage.jpg">
+          </ng-template>
+
+          <div>
+            <h3>{{prodotto.nomeProdotto}}</h3>
+            <p>Prezzo: €{{prodotto.prezzo}}</p>
+            <button (click)="eliminaArticolo(i)">Elimina</button>
+          </div>
         </div>
+     
       </div>
     </div>
 
+
     <!-- Pulsante per effettuare il checkout -->
     <div id="checkout">
-      <p>Totale: €30</p>
+      <p>Totale: €{{totale}}</p>
       <button routerLink="" [routerLinkActive]="'active'">Effettua il checkout</button>
     </div>
   </body>

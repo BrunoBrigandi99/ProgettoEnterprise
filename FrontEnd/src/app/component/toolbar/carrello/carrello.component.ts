@@ -1,77 +1,49 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/Auth/auth.service';
+import { Prodotto } from 'src/app/Model/Prodotto';
+import { ServiceService } from 'src/app/Service/service.service';
+
+
 
 @Component({
   selector: 'app-carrello',
   templateUrl: './carrello.component.html',
   styleUrls: ['./carrello.component.css']
 })
+
 export class CarrelloComponent {
-  /*
-  // Oggetto che rappresenta il carrello
-  let cart = {
-    items: [], // array vuoto di prodotti
-    total: 0 // totale inizializzato a 0
-  };
 
-  // Funzione per aggiungere un prodotto al carrello
-  function addProductToCart(productId) {
-    // Trova il prodotto corrispondente all'ID
-    let product = products.find(p => p.id === productId);
+  constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router, private auth: AuthService ) {}
 
-    // Aggiungi il prodotto all'array del carrello
-    cart.items.push(product);
 
-    // Aggiorna il totale del carrello
-    cart.total += product.price;
+  totale: number = 0
+  prodotti: Prodotto[] = [];
 
-    // Aggiorna la visualizzazione del carrello
-    updateCartDisplay();
-  }
-
-  // Funzione per aggiornare la visualizzazione del carrello
-  function updateCartDisplay() {
-    // Se il carrello è vuoto, nascondi il contenitore del carrello
-    if (cart.items.length === 0) {
-      document.querySelector('#cartItems').style.display = 'none';
-      document.querySelector('#cartTotal').style.display = 'none';
-      return;
-    }
-
-    // Altrimenti, mostra il contenitore del carrello e svuota la lista dei prodotti
-    document.querySelector('#cartItems').style.display = 'block';
-    document.querySelector('#cartTotal').style.display = 'block';
-    document.querySelector('#cartItems').innerHTML = '';
-
-    // Itera su ciascun prodotto nel carrello
-    cart.items.forEach(product => {
-      // Crea un elemento di lista per il prodotto
-      let listItem = document.createElement('li');
-      listItem.innerHTML = `
-        <span>${product.title} - ${product.price} €</span>
-        <button onclick="removeProductFromCart(${product.id})">Rimuovi</button>
-      `;
-
-      // Aggiungi l'elemento di lista alla lista dei prodotti nel carrello
-      document.querySelector('#cartItems').appendChild(listItem);
+  ngOnInit(): void {
+    this.auth.carrello.forEach((elemento) => {
+      this.service.getProdotto(elemento.toString()).subscribe((pro: Prodotto) => {
+        this.prodotti.push(pro);
+        this.totale+=pro.prezzo
+      });
     });
 
-    // Aggiorna il totale del carrello
-    document.querySelector('#cartTotal').textContent = `Totale: ${cart.total} €`;
   }
 
-  // Funzione per rimuovere un prodotto dal carrello
-  function removeProductFromCart(productId) {
-    // Trova l'indice del prodotto corrispondente all'ID
-    let indexToRemove = cart.items.findIndex(p => p.id === productId);
-
-    // Rimuovi il prodotto dall'array del carrello
-    cart.items.splice(indexToRemove, 1);
-
-    // Aggiorna il totale del carrello
-    cart.total -= product.price;
-
-    // Aggiorna la visualizzazione del carrello
-    updateCartDisplay();
+  //converte immagine per poter essere aperta nell'html
+  toUrl(imgAB: ArrayBuffer){
+    const imgSt = new String(imgAB)
+    
+    if (imgSt[0]==="i")
+      return 'data:image/png;base64,'+ imgAB
+    else //tecnicamente dovrei fare il controllo se inizia con 4
+      //return "data:image/jpeg;base64,/9j/"+imgAB //aggiungi annunci dovrebbe salvare senza /9j/
+      return "data:image/jpeg;base64,"+imgAB //queste statiche sono state salvate in questo modo, 
   }
-  */
+
+  eliminaArticolo(index: number): void {
+    this.totale -= this.prodotti[index].prezzo
+    this.prodotti.splice(index, 1)
+    this.auth.carrello.splice(index, 1)
+  }
 }

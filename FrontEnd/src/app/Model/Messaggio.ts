@@ -5,6 +5,11 @@ export class Messaggio {
   oggetto!: string;
   testo!: string;
   dataInvio!: Date;
-  mittente!: Utente;
-  destinatario!: Utente;
+
+  mittenteNome!: string;
+  destinatarioNome!: string;
+
+  mittenteId!: number;
+  destinatarioId!: number;
+
 }

@@ -20,29 +20,56 @@
 
 
   <div class="testo">
-      <h2>{{ prodotto.nomeProdotto }}</h2>
-      <h4>Categoria: {{prodotto.categoria}}</h4>
-      <p>Prezzo: {{ prodotto.prezzo }}</p>
-      <p>Taglia: {{ prodotto.taglia }}</p>
-      <p>Condizione: {{prodotto.condizione}}</p>
-      <p>Colore: {{prodotto.colore}}</p>
-      <p>Brand: {{prodotto.brand}}</p>
-      <p>Descrizione: {{prodotto.descrizione}}</p>
-      <p>Venditore id: {{prodotto.venditoreId}}</p>
+    <h2>{{ prodotto.nomeProdotto }}</h2>
+    <!--
+    <h4>Categoria: {{prodotto.categoria}}</h4>
+    -->
+    <p>Prezzo: {{ prodotto.prezzo }}</p>
+    <!--
+    <p>Taglia: {{ prodotto.taglia }}</p>
+    <p>Condizione: {{prodotto.condizione}}</p>
+    <p>Colore: {{prodotto.colore}}</p>
+    <p>Brand: {{prodotto.brand}}</p>
+    -->
+    <p>Descrizione: {{prodotto.descrizione}}</p>
+
+    <!--<p>Venditore id: {{prodotto.venditoreId}}</p>-->
+
+
+
+    <button *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id" (click)="addCart(prodotto.id)">Aggiungi al carrello</button>
+    <p *ngIf="prodottoAggiunto">Il prodotto è stato aggiunto</p>
+
+    <!-- Mostra i bottoni solo se l'ID del prodotto corrisponde all'ID dell'utente corrente -->
+    <button *ngIf="prodotto.venditoreId === auth.getUtenteCorrente().id" (click)="eliminaAnnuncio(prodotto.id)">Elimina annuncio</button>
+    <button *ngIf="prodotto.venditoreId === auth.getUtenteCorrente().id" (click)="modificaAnnuncio(prodotto.id)">Modifica annuncio</button>
+
   </div>
 
 
 
-  <!--Venditore-->
-  <div class="bordo">
-    <h1>Venditore:</h1>
-    <p>{{utente.nome}} {{utente.cognome}}</p>
-    <h4>Contatti:</h4>
-    <p>Telefono: {{utente.telefono}}</p>
-    <p>Email: {{utente.email}}</p>
-    <button mat-button (click)="prendiUtente(utente.id)">Contatta L'utente</button>
-  </div>
+  
+    <!--Venditore-->
+    <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id">
+      <h1>Venditore:</h1>
+      <p>{{utente.nome}} {{utente.cognome}}</p>
+      <h4>Contatti:</h4>
+      <!--<p>Telefono: {{utente.telefono}}</p>-->
+      <p>Email: {{utente.email}}</p>
+      <button mat-button (click)="prendiUtente(utente.id)">Contatta L'utente</button>
+    </div>
 
+
+    <!--Recensioni del venditore-->
+    <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id">
+      <h1>Le mie recensioni:</h1>
+        <div class="bordo-article" *ngFor="let rec of recensioni" >
+            <p>{{rec.autore}}</p>
+            <p>{{rec.valutazione}}</p>
+            <p>{{rec.commento}}
+        </div>
+        <p *ngIf="recensioni.length === 0">Il venditore non ha recensioni.</p>
+    </div>
 
 
 </div>

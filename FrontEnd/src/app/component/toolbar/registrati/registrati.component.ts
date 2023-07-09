@@ -55,7 +55,7 @@ export class RegistratiComponent {
       (response) => {
         console.log('La richiesta HTTP è stata completata con successo:', response);
         this.auth.accedi(response);
-        this.router.navigate(['/profilo']);
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.log('Si è verificato un errore durante la richiesta HTTP:', error);

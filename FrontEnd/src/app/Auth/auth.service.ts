@@ -8,8 +8,9 @@ export class AuthService {
 
   constructor() { }
 
-  public authorization = ""
+  private authorization = ""
   private utenteCorrente: Utente = new Utente();
+  public carrello: number[] = [];
 
 
   accedi(utente: Utente){
@@ -22,11 +23,11 @@ export class AuthService {
   
   // Restituisce true se utenteCorrente è definito, false altrimenti
   isAuthenticated(): boolean {
-    return !!this.utenteCorrente;
+    return !this.utenteCorrente;
   }
 
   // Restituisce l'utente corrente
-  getutenteCorrente(): Utente {
+  getUtenteCorrente(): Utente {
     return this.utenteCorrente;
   }
 

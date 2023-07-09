@@ -1,56 +1,69 @@
-<p>chat works!</p>
-
-
-
-
-
-<div *ngFor="let messaggio of messaggi" >
-    <p>Messaggio: {{ messaggio.testo }} €</p>
-</div>
-
+<!--
 <div class="chat-container">
-    <div class="column">
-      <ul class="contact-list">
-        <li class="contact-item">Contatto 1</li>
-        <li class="contact-item">Contatto 2</li>
-        <li class="contact-item">Contatto 3</li>
-        <li class="contact-item">Contatto 1</li>
-        <li class="contact-item">Contatto 2</li>
-        <li class="contact-item">Contatto 3</li>
-        <li class="contact-item">Contatto 1</li>
-        <li class="contact-item">Contatto 2</li>
-        <li class="contact-item">Contatto 3</li>
-        <!-- Aggiungi altri nomi dei contatti qui -->
-      </ul>
+
+    <div class="column-contact" *ngFor="let messaggio of messaggi">
+        <div class="contact-box">
+
+          <p>{{messaggio.mittenteNome}}</p>
+
+        </div>
     </div>
-    <div class="column">
-      <div class="message-box">
-        <div class="message">
-          <div class="sender">Mittente 1</div>
-          <div class="text">Messaggio 1</div>
+
+    <div class="column-message" *ngFor="let messaggio of messaggi">
+      <div class="message-box" >
+
+          <p class="sender">{{messaggio.mittenteNome}}</p>
+          <p class="text">{{messaggio.mittenteNome}}</p>
+
+      </div>
+    </div>
+
+</div>
+-->
+  
+
+  <div class="chat-container">
+    <div class="sidebar">
+      <div class="header">
+        <h1>Contatti</h1>
+      </div>
+
+      <div class="contacts" *ngFor="let contatto of contatti">
+        <div class="contact">
+          <!--<img src="avatar1.jpg" alt="Avatar" class="avatar">-->
+          <div class="contact-info">
+            <h2>{{contatto.destinatarioId}}</h2>
+            <p>{{contatto.testo}}</p>
+          </div>
         </div>
-        <div class="message">
-          <div class="sender">Mittente 2</div>
-          <div class="text">Messaggio 2</div>
+        <!--
+        <div class="contact">
+          <img src="avatar2.jpg" alt="Avatar" class="avatar">
+          <div class="contact-info">
+            <h2>Jane Smith</h2>
+            <p>Are you free tomorrow?</p>
+          </div>
         </div>
-        <div class="message">
-            <div class="sender">Mittente 1</div>
-            <div class="text">Messaggio 1</div>
-          </div>
-          <div class="message">
-            <div class="sender">Mittente 2</div>
-            <div class="text">Messaggio 2</div>
-          </div>
-          <div class="message">
-            <div class="sender">Mittente 1</div>
-            <div class="text">Messaggio 1</div>
-          </div>
-          <div class="message">
-            <div class="sender">Mittente 2</div>
-            <div class="text">Messaggio 2</div>
-          </div>
-        <!-- Aggiungi altri messaggi qui -->
+        -->
+      </div>
+
+    </div>
+    <div class="chat">
+      <div class="header">
+        <h1>John Doe</h1>
+      </div>
+      <div class="messages">
+        <div class="message received">
+          <p>Hey, what's up?</p>
+        </div>
+        <div class="message sent">
+          <p>Not much. Just chilling.</p>
+        </div>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Type a message...">
+        <button>Send</button>
       </div>
     </div>
   </div>
-  
+

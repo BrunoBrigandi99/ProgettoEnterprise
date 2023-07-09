@@ -12,11 +12,32 @@ export class ChatComponent {
 
   constructor(public auth: AuthService, private service: ServiceService){}
 
-
   messaggi: Messaggio[] = [] 
 
+  contatti: Messaggio[] = []
+
   ngOnInit(){
-    this.service.getMessaggi(this.auth.getutenteCorrente().id.toString()).subscribe(mess => this.messaggi = mess)
+
+    // this.service.getContatti(this.auth.getUtenteCorrente().id.toString()).subscribe(cont => {
+    //     this.contatti = cont
+    //   })
+
+    // this.service.getUltimiMessaggi(this.auth.getUtenteCorrente().id.toString()).subscribe(cont => {
+    //   this.contatti = cont
+    // })
+
+    
+
+
+    this.service.getMessaggiByIdUtente(this.auth.getUtenteCorrente().id.toString()).subscribe(mess => {
+      this.messaggi = mess
+    })
+
+    for(const mess of this.messaggi){
+      if (mess.destinatarioId != this.auth.getUtenteCorrente().id){
+        
+      }
+    }
 
 
 

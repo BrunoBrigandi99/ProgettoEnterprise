@@ -30,13 +30,20 @@ export class AccediComponent {
       (response) => {
         this.service.getUtenteByEmail(this.formAccesso.value.email).subscribe(
           (response) => {
-            this.router.navigate(['/profilo'])
+            this.auth.accedi(response)
 
+            console.log(this.auth.getUtenteCorrente())
+
+            this.router.navigate(['/profilo'])
           }
         )
       }
     )
 
+  }
+
+  reindirizzaRegistrati(): void {
+    this.router.navigate(['/registrati']);
   }
 
 }

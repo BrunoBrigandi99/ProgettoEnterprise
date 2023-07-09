@@ -6,6 +6,7 @@ import { Prodotto } from 'src/app/Model/Prodotto';
 import { Recensione } from 'src/app/Model/Recensione';
 import { Utente } from 'src/app/Model/Utente';
 import { Image } from 'src/app/Model/Image';
+import { AuthService } from 'src/app/Auth/auth.service';
 
 @Component({
   selector: 'app-pag-annuncio',
@@ -14,22 +15,28 @@ import { Image } from 'src/app/Model/Image';
 })
 export class PagAnnuncioComponent {
 
-  constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router ) {}
+  constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router, public auth: AuthService ) {}
 
   prodotto: Prodotto = new Prodotto();    //va modificato backend, deve ricevere un prodotto e non un array di prodotti, va modificato anche service e html
   utente: Utente = new Utente();
   recensioni: Recensione[] = [];
   altriProd: Prodotto[] = [];
+  prodottoAggiunto: boolean = false;
 
 
   ngOnInit() {
     //dall'id pel prodotto ricevuto come parametro prendo il prodotto
     let id: string = "";
     id += this.route.snapshot.paramMap.get("id");
+
     this.service.getProdotto(id).subscribe(pro => {
       this.prodotto = pro
 
       this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
+
+      //ottengo tutte le recensioni di questo venditore
+      this.service.getRecensione(this.prodotto.venditoreId.toString()).subscribe(rec => this.recensioni = rec)
+     
 
       //this.utente.id = this.prodotto.utente;
       //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
@@ -60,7 +67,6 @@ export class PagAnnuncioComponent {
       return "data:image/jpeg;base64,"+imgAB //queste statiche sono state salvate in questo modo, 
   }
 
-
   //modifica l'immagine principale con quelle secondarie
   ottieniFoto(numero: number){
     if (this.prodotto.images && this.prodotto.images[numero] != undefined){
@@ -83,5 +89,24 @@ export class PagAnnuncioComponent {
     this.router.navigate(['/profilo-venditore', id]);
   }
 
+
+  addCart(prodottoId: number ){
+    if (!!this.auth.isAuthenticated()){
+      console.log("entrato")
+      this.router.navigate(['accedi']);
+    }
+    this.auth.carrello.push(prodottoId)
+    this.prodottoAggiunto = true;
+  }
+
+  aggiungiAnnuncio(){
+
+  }
+
+  eliminaAnnuncio(prodottoId: number){}
+  
+  modificaAnnuncio(prodottoId: number){
+
+  }
 
 }

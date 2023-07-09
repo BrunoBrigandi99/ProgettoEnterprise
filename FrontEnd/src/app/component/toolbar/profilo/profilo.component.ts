@@ -11,6 +11,9 @@ import { ServiceService } from 'src/app/Service/service.service';
   styleUrls: ['./profilo.component.css']
 })
 export class ProfiloComponent {
+aggiungiAnnuncio() {
+throw new Error('Method not implemented.');
+}
 
   constructor(public auth: AuthService, private service: ServiceService, private router: Router){}
 
@@ -19,10 +22,10 @@ export class ProfiloComponent {
 
   ngOnInit(){
     //ottengo tutti i prodotti di questo venditore
-    this.service.getProdottiByUserId(this.auth.getutenteCorrente().id.toString()).subscribe(pro => this.prodotti = pro)
+    this.service.getProdottiByUserId(this.auth.getUtenteCorrente().id.toString()).subscribe(pro => this.prodotti = pro)
 
     //ottengo tutte le recensioni di questo venditore
-    this.service.getRecensione(this.auth.getutenteCorrente().id.toString()).subscribe(rec =>{ this.recensioni = rec
+    this.service.getRecensione(this.auth.getUtenteCorrente().id.toString()).subscribe(rec =>{ this.recensioni = rec
     console.log(this.recensioni)
     })
 
