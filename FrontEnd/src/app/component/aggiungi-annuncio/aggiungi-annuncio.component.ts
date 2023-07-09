@@ -37,6 +37,7 @@ export class AggiungiAnnuncioComponent {
   prodotto = new Prodotto();
   images: ImageBackend[] = [];
   maxImage: Boolean = false;
+  sicurezza: Boolean = false
 
   formato: ArrayBuffer = new ArrayBuffer(0);
 
@@ -114,7 +115,7 @@ export class AggiungiAnnuncioComponent {
 
     this.service.setProdotto(this.prodottoBackend).subscribe( 
       (response) => {
-        //this.router.navigate(['/pag-annuncio', response.id]);
+        this.router.navigate(['/pag-annuncio', response.id]);
       },
       (error) => {
         //console.log('Si è verificato un errore durante la richiesta HTTP:', error);
