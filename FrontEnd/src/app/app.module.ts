@@ -16,7 +16,6 @@ import { CarrelloComponent } from './component/toolbar/carrello/carrello.compone
 import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
 import { AccediComponent } from './component/toolbar/accedi/accedi.component';
 import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
-import { MessaggisticaComponent } from './component/toolbar/messaggistica/messaggistica.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { ChatComponent } from './component/chat/chat.component';
+import { ChatComponent } from './component/toolbar/chat/chat.component';
 import { JsonParser, LoggingInterceptor } from './Interceptor/logging.interceptor';
 
 
@@ -65,7 +64,6 @@ import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/agg
     AggiungiAnnuncioComponent,
     AccediComponent,
     RegistratiComponent,
-    MessaggisticaComponent,
     ProfiloVenditoreComponent,
     ChatComponent,
     AggiungiRecensioneComponent,
@@ -95,7 +93,7 @@ import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/agg
     MatSidenavModule,
     MatAutocompleteModule,
     MatCardModule,
-    
+
 
   ],
   providers: [

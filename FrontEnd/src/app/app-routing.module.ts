@@ -11,16 +11,14 @@ import { CarrelloComponent } from './component/toolbar/carrello/carrello.compone
 import { AccediComponent } from './component/toolbar/accedi/accedi.component';
 import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
 import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
-import { MessaggisticaComponent } from './component/toolbar/messaggistica/messaggistica.component';
 import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
-import { ChatComponent } from './component/chat/chat.component';
+import { ChatComponent } from './component/toolbar/chat/chat.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
 
-    {path: 'messaggistica', component: MessaggisticaComponent},
     {path: 'chat', component: ChatComponent},
 
     {path: 'profilo', component: ProfiloComponent},
