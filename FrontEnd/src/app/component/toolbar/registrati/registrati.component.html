@@ -3,41 +3,21 @@
 
     <h1>REGISTRATI</h1>
 
-    <!--
     <div class="input-container">
       <p>Nome:</p>
       <input type="text" formControlName="nome">
+      <div *ngIf="formRegistrazione.controls['nome'].errors && formRegistrazione.controls['nome'].touched" class="error-message">
+        <p *ngIf="formRegistrazione.controls['nome'].errors['required']">Il nome è obbligatorio.</p>
+      </div>
     </div>
 
     <div class="input-container">
       <p class="cognome">Cognome:</p>
       <input type="text" formControlName="cognome">
+      <div *ngIf="formRegistrazione.controls['cognome'].errors && formRegistrazione.controls['cognome'].touched" class="error-message">
+        <p *ngIf="formRegistrazione.controls['cognome'].errors['required']">Il cognome è obbligatorio.</p>
+      </div>
     </div>
-
-    <div class="input-container">
-      <p class="mail">Email:</p>
-      <input type="email" formControlName="email">
-    </div>
-
-    <div class="input-container">
-      <p class="pw">Password:</p>
-      <input type="password" formControlName="password">
-    </div>
-    --><div class="input-container">
-  <p>Nome:</p>
-  <input type="text" formControlName="nome">
-  <div *ngIf="formRegistrazione.controls['nome'].errors && formRegistrazione.controls['nome'].touched" class="error-message">
-    <p *ngIf="formRegistrazione.controls['nome'].errors['required']">Il nome è obbligatorio.</p>
-  </div>
-</div>
-
-<div class="input-container">
-  <p class="cognome">Cognome:</p>
-  <input type="text" formControlName="cognome">
-  <div *ngIf="formRegistrazione.controls['cognome'].errors && formRegistrazione.controls['cognome'].touched" class="error-message">
-    <p *ngIf="formRegistrazione.controls['cognome'].errors['required']">Il cognome è obbligatorio.</p>
-  </div>
-</div>
 
     <div class="input-container">
       <p class="mail">Email:</p>
