@@ -89,27 +89,9 @@ export class AggiungiAnnuncioComponent {
       return "data:image/jpeg;base64,"+imgAB 
   }
 
-  // toUrl(im: ArrayBuffer){
- 
-  //   const imageUrl = 'data:image/jpeg;base64,/9j/'+im;
-  //   return imageUrl;
-  // }
-
-
   prodottoBackend: ProdottoBackend = new ProdottoBackend();
 
   onSubmit(){
-
-    // this.prodotto.nomeProdotto = this.formAggAnn.value.titolo;
-    // this.prodotto.prezzo = this.formAggAnn.value.prezzo;
-    // this.prodotto.categoria = this.formAggAnn.value.categoria;
-    // this.prodotto.condizione = this.formAggAnn.value.condizione;
-    // this.prodotto.brand = this.formAggAnn.value.brand;
-    // this.prodotto.colore = this.formAggAnn.value.colore;
-    
-    // this.prodotto.taglia = this.formAggAnn.value.taglia;
-    //this.prodotto.immagini = this.images;
-
 
     this.prodottoBackend.nomeProdotto = this.formAggAnn.value.titolo;
     this.prodottoBackend.prezzo = this.formAggAnn.value.prezzo;

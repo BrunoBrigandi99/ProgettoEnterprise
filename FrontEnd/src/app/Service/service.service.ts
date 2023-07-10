@@ -23,15 +23,12 @@ export class ServiceService {
  
 
 
-  // CHRISTIAN BACKEND
+
   //############################################################## PRODOTTO ##############################################################
-  //Restituisce una lista di prodotti deve restituire un prodotto
   getProdotto(idProdotto: string): Observable <Prodotto> {
     return this.http.get<Prodotto>('http://localhost:8080/prodotto-api/prodotti/'+ idProdotto);
   }
 
-
-  //FUNZIONA
   getProdotti(): Observable <Prodotto[]>{
     return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti')
   }
@@ -42,10 +39,8 @@ export class ServiceService {
 
   deleteProdotto(prodottoId: number){
     return this.http.delete('http://localhost:8080/prodotto-api/prodotti/'+ prodottoId);
-
   }
 
-  //
   getProdottiByUserId(idUtente: String): Observable <Prodotto[]> {
     return this.http.get<Prodotto[]>('http://localhost:8080/prodotto-api/prodotti/utente/'+ idUtente);
   }
@@ -63,6 +58,10 @@ export class ServiceService {
     return this.http.post("http://localhost:8080/recensione-api/crea-recensione/", recensione);
   }
 
+  
+
+
+
   //############################################################## UTENTE ##############################################################
 
   getUtente(idUtente: string): Observable <Utente> {
@@ -70,13 +69,10 @@ export class ServiceService {
   }
 
   getUtenteByEmail(emailUtente: string): Observable <Utente> {
-    //let headers = new HttpHeaders( { Authorization: "Bearer "+this.auth.getAccessToken()} )
-    //return this.http.get<Utente>("http://localhost:8080/utente-api/utente/"+ emailUtente, { headers: headers});
     return this.http.get<Utente>("http://localhost:8080/utente-api/utente/"+ emailUtente);
   }
 
   async accedi(encodedStr: string): Promise<Observable<any>>{
-    //console.log(encodedStr)
     let headers = new HttpHeaders( { Authorization: "Basic "+encodedStr } )
     return this.http.post('http://localhost:8080/login', null, { headers: headers } )
   }
@@ -89,16 +85,10 @@ export class ServiceService {
   
   
   //############################################################## MESSAGGI ##############################################################
-
-  
   getMessaggiByIdUtente(idUtente: string ): Observable <Messaggio[]>{
     return this.http.get<Messaggio[]>("http://localhost:8080/messaggio-api/messaggi/utente/"+ idUtente)
 
   }
-
-  // getContatti(idUtente: string): Observable <Messaggio[]>{
-  //   return this.http.get<Messaggio[]>("http://localhost:8080/messaggio-api/contatti/utente/"+ idUtente)
-  // }
 
   salvaMessaggio(messaggio: Messaggio){
     return this.http.post("http://localhost:8080/messaggio-api/salva", messaggio)
@@ -111,11 +101,11 @@ export class ServiceService {
 
 
   /*METODI PER NOTIFICHE MESSAGGISTICA */
-  badgeValue: number = 5;
+  // badgeValue: number = 5;
 
-  azzeraNumero(){
-    this.badgeValue = 0;
-  }
+  // azzeraNumero(){
+  //   this.badgeValue = 0;
+  // }
 
 
 

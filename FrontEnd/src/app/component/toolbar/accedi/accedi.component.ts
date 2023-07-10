@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { Utente } from 'src/app/Model/Utente';
 import { ServiceService } from 'src/app/Service/service.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-accedi',
@@ -13,8 +14,8 @@ import { ServiceService } from 'src/app/Service/service.service';
 export class AccediComponent {
 
   formAccesso: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
   });
 
   constructor(private service: ServiceService, private auth: AuthService, private router: Router){}
@@ -22,8 +23,8 @@ export class AccediComponent {
   utente: Utente = new Utente();
 
   async onSubmit(){
-
-    let str = this.formAccesso.value.email+":"+this.formAccesso.value.password
+    let str = this.formAccesso.value['email'] + ":" + this.formAccesso.value['password'];
+  
     let encodedStr = btoa(str);
     (await (this.service.accedi(encodedStr))).subscribe(
       (response) => {

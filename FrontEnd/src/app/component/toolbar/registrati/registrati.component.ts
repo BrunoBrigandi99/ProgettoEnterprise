@@ -5,6 +5,7 @@ import { Observable, map, startWith } from 'rxjs';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { Utente } from 'src/app/Model/Utente';
 import { ServiceService } from 'src/app/Service/service.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registrati',
@@ -13,12 +14,13 @@ import { ServiceService } from 'src/app/Service/service.service';
 })
 export class RegistratiComponent {
 
+
+
   formRegistrazione: FormGroup = new FormGroup({
-    nome: new FormControl(''),
-    cognome: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    posizione: new FormControl(''),
+    nome: new FormControl('', Validators.required),
+    cognome: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
     telefono: new FormControl('')
   });
 
@@ -43,47 +45,41 @@ export class RegistratiComponent {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  onSubmit(){
-    this.utente.nome = this.formRegistrazione.value.nome
-    this.utente.cognome = this.formRegistrazione.value.cognome
-    this.utente.email = this.formRegistrazione.value.email
-    this.utente.password = this.formRegistrazione.value.password
-    this.utente.posizione = this.formRegistrazione.value.posizione
-    this.utente.telefono = this.formRegistrazione.value.telefono
+  onSubmit() {
+    if (this.formRegistrazione.valid) {
+      this.utente.nome = this.formRegistrazione.value['nome'];
+      this.utente.cognome = this.formRegistrazione.value['cognome'];
+      this.utente.email = this.formRegistrazione.value['email'];
+      this.utente.password = this.formRegistrazione.value['password'];
+      this.utente.telefono = this.formRegistrazione.value['telefono'];
 
-    this.service.registrati(this.utente).subscribe(
-      async (response) => {
-        console.log('La richiesta HTTP è stata completata con successo:', response);
-
-
-        let str = this.formRegistrazione.value.email+":"+this.formRegistrazione.value.password
-        let encodedStr = btoa(str);
-        (await (this.service.accedi(encodedStr))).subscribe(
-          (response) => {
-            this.service.getUtenteByEmail(this.formRegistrazione.value.email).subscribe(
-              (response) => {
-                this.auth.accedi(response)
-
-                console.log(this.auth.getUtenteCorrente())
-
-                this.router.navigate(['/profilo'])
-              }
-            )
-          }
-        )
+      this.service.registrati(this.utente).subscribe(
+        async (response) => {
+          console.log('La richiesta HTTP è stata completata con successo:', response);
 
 
+          let str = this.formRegistrazione.value.email+":"+this.formRegistrazione.value.password
+          let encodedStr = btoa(str);
+          (await (this.service.accedi(encodedStr))).subscribe(
+            (response) => {
+              this.service.getUtenteByEmail(this.formRegistrazione.value.email).subscribe(
+                (response) => {
+                  this.auth.accedi(response)
 
-        // this.auth.accedi(response);
-        // this.router.navigate(['/login']);
-      },
+                  console.log(this.auth.getUtenteCorrente())
+
+                  this.router.navigate(['/profilo'])
+                }
+              )
+            }
+          )
+        
+       
+        },
       (error) => {
         console.log('Si è verificato un errore durante la richiesta HTTP:', error);
-      }
-    );
-
-
-
+      });
   }
+}
 
 }
