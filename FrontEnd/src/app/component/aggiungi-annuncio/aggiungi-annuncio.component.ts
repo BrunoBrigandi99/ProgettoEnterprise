@@ -23,7 +23,7 @@ export class AggiungiAnnuncioComponent {
 
   ngOnInit(): void {
 
-    if(!this.auth.autenticato){
+    if(!this.auth.isAuthenticated()){
       this.router.navigate(['/accedi'])
     }
 

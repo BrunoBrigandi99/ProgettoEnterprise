@@ -10,6 +10,7 @@ export class Utente {
   email!: String;
   password!: String; 
   posizione!: String;
+  tipo!: string;
   telefono!: String; 
 
   prodottiUtente!: Prodotto[];

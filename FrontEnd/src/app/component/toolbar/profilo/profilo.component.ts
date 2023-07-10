@@ -47,4 +47,20 @@ export class ProfiloComponent {
     
   }
 
+  modificaProfilo(){
+    this.auth.modificaProfilo=true
+    this.router.navigate(['/registrati'])
+  }
+
+  eliminaProfilo(){
+    if (confirm("Sei sicuro di voler eliminare il profilo? L'operazione è permanente!")) {
+      this.service.eliminaProfilo(this.auth.getUtenteCorrente()).subscribe(
+        (response) => {
+          this.auth.esci()
+          this.router.navigate(['/home'])
+        }
+      )
+    }
+  }
+
 }

@@ -14,17 +14,15 @@ import { Validators } from '@angular/forms';
 })
 export class RegistratiComponent {
 
-
+  constructor(public auth: AuthService, private service: ServiceService, private router: Router){}
 
   formRegistrazione: FormGroup = new FormGroup({
     nome: new FormControl('', Validators.required),
     cognome: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
-    telefono: new FormControl('')
+    tipo: new FormControl(''),
   });
-
-  constructor(private auth: AuthService, private service: ServiceService, private router: Router){}
 
   public utente: Utente = new Utente();
 
@@ -37,6 +35,19 @@ export class RegistratiComponent {
       startWith(''),
       map(value => this._filter(value || '')),
     );
+
+    if (this.auth.modificaProfilo){
+      const formModifica = new FormGroup({
+        nome: new FormControl(this.auth.getUtenteCorrente().nome, Validators.required),
+        cognome: new FormControl(this.auth.getUtenteCorrente().cognome, Validators.required),
+        email: new FormControl(this.auth.getUtenteCorrente().email, [Validators.required, Validators.email]),
+        password: new FormControl("", Validators.required),
+        tipo: new FormControl(''),
+      });
+      this.formRegistrazione = formModifica
+    }
+    
+    
   }
 
   private _filter(value: string): string[] {
@@ -51,34 +62,48 @@ export class RegistratiComponent {
       this.utente.cognome = this.formRegistrazione.value['cognome'];
       this.utente.email = this.formRegistrazione.value['email'];
       this.utente.password = this.formRegistrazione.value['password'];
-      this.utente.telefono = this.formRegistrazione.value['telefono'];
-
-      this.service.registrati(this.utente).subscribe(
-        async (response) => {
-          console.log('La richiesta HTTP è stata completata con successo:', response);
+      this.utente.tipo = this.formRegistrazione.value['tipo'];
 
 
-          let str = this.formRegistrazione.value.email+":"+this.formRegistrazione.value.password
-          let encodedStr = btoa(str);
-          (await (this.service.accedi(encodedStr))).subscribe(
-            (response) => {
-              this.service.getUtenteByEmail(this.formRegistrazione.value.email).subscribe(
-                (response) => {
-                  this.auth.accedi(response)
+      if (!this.auth.modificaProfilo){
+        this.service.registrati(this.utente).subscribe(
+          async (response) => {
+            let str = this.formRegistrazione.value.email+":"+this.formRegistrazione.value.password
+            let encodedStr = btoa(str);
+            (await (this.service.accedi(encodedStr))).subscribe(
+              (response) => {
+                this.service.getUtenteByEmail(this.formRegistrazione.value.email).subscribe(
+                  (response) => {
+                    this.auth.accedi(response)
+                    this.router.navigate(['/profilo'])
+                  }
+                )
+              }
+            )
+          }
+        );
+      }
+      else{
+        this.service.modificaProfilo(this.utente).subscribe(
+          async (response) => {
+            let str = this.formRegistrazione.value.email+":"+this.formRegistrazione.value.password
+            let encodedStr = btoa(str);
+            (await (this.service.accedi(encodedStr))).subscribe(
+              (response) => {
+                this.service.getUtenteByEmail(this.formRegistrazione.value.email).subscribe(
+                  (response) => {
+                    this.auth.accedi(response)
+                    this.auth.modificaProfilo = false
+                    this.router.navigate(['/profilo'])
+                  }
+                )
+              }
+            )
+          }
+        );
+      }
 
-                  console.log(this.auth.getUtenteCorrente())
-
-                  this.router.navigate(['/profilo'])
-                }
-              )
-            }
-          )
-        
-       
-        },
-      (error) => {
-        console.log('Si è verificato un errore durante la richiesta HTTP:', error);
-      });
+      
   }
 }
 

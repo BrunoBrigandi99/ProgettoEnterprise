@@ -81,6 +81,16 @@ export class ServiceService {
     return this.http.post<Utente>('http://localhost:8080/utente-api/salva', utente);
   }
 
+  modificaProfilo(utente: Utente): Observable<Utente> {
+    return this.http.put<Utente>('http://localhost:8080/utente-api/utenti/'+ utente.id, utente);
+  }
+
+  eliminaProfilo(utente: Utente): Observable<Utente> {
+    return this.http.delete<Utente>('http://localhost:8080/utente-api/utenti/'+ utente.id);
+  }
+
+  
+
 
   
   

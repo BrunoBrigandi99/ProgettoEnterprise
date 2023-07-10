@@ -1,7 +1,8 @@
 <div class="container">
   <form [formGroup]="formRegistrazione" (ngSubmit)="onSubmit()">
 
-    <h1>REGISTRATI</h1>
+    <h1 *ngIf="this.auth.modificaProfilo">Modifica Profilo</h1>
+    <h1 *ngIf="!this.auth.modificaProfilo">REGISTRATI</h1>
 
     <div class="input-container">
       <p>Nome:</p>
@@ -38,7 +39,7 @@
 
     <div class="input-container">
       <p class="ruolo">Ruolo:</p>
-      <input type="text" placeholder="Seleziona" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <input type="text" formControlName="tipo" placeholder="Seleziona" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of options" [value]="option">
           {{option}}

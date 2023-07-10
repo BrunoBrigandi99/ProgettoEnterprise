@@ -8,10 +8,12 @@ export class AuthService {
 
   constructor() { }
 
-  autenticato: Boolean = false
+  private autenticato: Boolean = false
   private authorization = ""
   private utenteCorrente: Utente = new Utente();
   public carrello: number[] = [];
+
+  modificaProfilo: Boolean = false;
 
 
 

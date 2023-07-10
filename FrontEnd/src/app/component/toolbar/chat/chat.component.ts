@@ -25,7 +25,7 @@ export class ChatComponent {
 
   ngOnInit(){
 
-    if(!this.auth.autenticato){
+    if(!this.auth.isAuthenticated()){
       this.router.navigate(['/accedi'])
     }else{
 
