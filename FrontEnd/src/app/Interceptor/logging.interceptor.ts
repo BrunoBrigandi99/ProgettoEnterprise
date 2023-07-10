@@ -41,19 +41,6 @@ export class LoggingInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
-
-
-
-    
-
-    
-
-    // if(!req.headers.get("Authorization")){
-    //   req.headers = new Headers ({ })
-    //   req.headers.set( "Authorization", this.auth.getToken() ) 
-    //   console.log(req.headers.get("Authorization"))
-    // }
-
     if (!req.headers.has('Authorization')) {
       const modifiedReq = req.clone({
         setHeaders: {
@@ -61,24 +48,11 @@ export class LoggingInterceptor implements HttpInterceptor {
         }
       });
       req = modifiedReq
-      //return next.handle(modifiedReq);
     }
-
-
-
-    
-
-    
-
-
-
     return next.handle(req).pipe(
       tap((event) => {
-        //console.log(event);
         
         if (event instanceof HttpResponse && event.headers instanceof HttpHeaders) {
-
-
           let access_token = event.headers.get('access_token')
  
           if (access_token) this.auth.setToken("Bearer "+access_token)             

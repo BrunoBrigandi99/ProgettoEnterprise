@@ -39,8 +39,6 @@ import { ChatComponent } from './component/toolbar/chat/chat.component';
 import { JsonParser, LoggingInterceptor } from './Interceptor/logging.interceptor';
 
 
-
-import { CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/aggiungi-recensione.component';
 
 
@@ -102,8 +100,8 @@ import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/agg
 
     { provide: JsonParser, useClass: LoggingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
-],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
