@@ -7,6 +7,8 @@ import { Recensione } from 'src/app/Model/Recensione';
 import { Utente } from 'src/app/Model/Utente';
 import { Image } from 'src/app/Model/Image';
 import { AuthService } from 'src/app/Auth/auth.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Messaggio } from 'src/app/Model/Messaggio';
 
 @Component({
   selector: 'app-pag-annuncio',
@@ -16,6 +18,8 @@ import { AuthService } from 'src/app/Auth/auth.service';
 export class PagAnnuncioComponent {
 
   constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router, public auth: AuthService ) {}
+
+  formAggMes: FormGroup = new FormGroup({ nuovoMessaggio: new FormControl("") });
 
   prodotto: Prodotto = new Prodotto();    //va modificato backend, deve ricevere un prodotto e non un array di prodotti, va modificato anche service e html
   utente: Utente = new Utente();
@@ -41,20 +45,8 @@ export class PagAnnuncioComponent {
 
       //ottengo tutti i prodotti di questo venditore
       this.service.getProdottiByUserId(this.prodotto.id.toString()).subscribe(pro => this.prodotti = pro)
-     
-
+    
     });
-
-
-
-
-
-    //this.recensioni = this.utente.recensioni;
-    //this.service.getRecensioni(this.utente).subscribe(rec => this.recensioni = rec)
-
-    //this.altriProd = this.utente.prodotti;
-    //this.service.getProdottiByUtente(this.utente).subscribe(pro => this.altriProd = pro)
-    //this.service.getProdotti().subscribe(prod => this.altriProd = prod); SOLO PER PROVA
   }
 
 
@@ -84,9 +76,21 @@ export class PagAnnuncioComponent {
     }
   }
 
-  //dato l'id dell'utente, va a quella pagina del profilo del venditore
-  prendiUtente(id: number) {
-    this.router.navigate(['/profilo-venditore', id]);
+
+  onSubmit(){
+    let messagg: Messaggio = new Messaggio
+    messagg.destinatarioId = this.prodotto.venditoreId
+    messagg.mittenteId = this.auth.getUtenteCorrente().id
+    messagg.mittenteNome = this.auth.getUtenteCorrente().nome + " " + this.auth.getUtenteCorrente().cognome
+    messagg.testo = this.formAggMes.value.nuovoMessaggio
+
+    if (confirm("Sei sicuro di voler inviare il messaggio?")) {  
+      this.service.salvaMessaggio(messagg).subscribe(
+        (response) => {
+          this.router.navigate(['/chat']);
+        }
+      )
+    }
   }
 
 

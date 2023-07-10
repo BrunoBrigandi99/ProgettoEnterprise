@@ -49,13 +49,20 @@
   </div>
 
   <!--Venditore-->
-  <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id">
+  <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id && auth.isAuthenticated()" >
+    <!--
     <h1 style="font-weight: bolder;">Venditore:</h1>
     <p>{{utente.nome}} {{utente.cognome}}</p>
     <h4>Contatti:</h4>
-    <!--<p>Telefono: {{utente.telefono}}</p>-->
+    <p>Telefono: {{utente.telefono}}</p>
     <p>Email: {{utente.email}}</p>
-    <button (click)="prendiUtente(utente.id)">Contatta L'utente</button>
+    -->
+    <form [formGroup]="formAggMes" (ngSubmit)="onSubmit()">
+      <button type="submit">Contatta L'utente</button>
+      <input type="text" placeholder="Type a message... " formControlName="nuovoMessaggio">
+    </form>
+    
+
   </div>
 
   <!--Altri prodotti del venditore-->

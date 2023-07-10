@@ -22,6 +22,11 @@ export class AggiungiAnnuncioComponent {
   formAggAnn: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
+
+    if(!this.auth.autenticato){
+      this.router.navigate(['/accedi'])
+    }
+
     this.formAggAnn = new FormGroup({
       titolo: new FormControl(''),
       prezzo: new FormControl(''),

@@ -86,12 +86,19 @@ export class ServiceService {
   
   //############################################################## MESSAGGI ##############################################################
 
+  
   getMessaggiByIdUtente(idUtente: string ): Observable <Messaggio[]>{
     return this.http.get<Messaggio[]>("http://localhost:8080/messaggio-api/messaggi/utente/"+ idUtente)
 
   }
 
-  getContatti(idUtente: string){}
+  // getContatti(idUtente: string): Observable <Messaggio[]>{
+  //   return this.http.get<Messaggio[]>("http://localhost:8080/messaggio-api/contatti/utente/"+ idUtente)
+  // }
+
+  salvaMessaggio(messaggio: Messaggio){
+    return this.http.post("http://localhost:8080/messaggio-api/salva", messaggio)
+  }
 
 
 

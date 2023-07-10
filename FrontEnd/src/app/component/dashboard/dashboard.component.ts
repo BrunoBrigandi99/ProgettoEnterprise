@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { ServiceService } from 'src/app/Service/service.service';
 import { AuthService } from '../../Auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class DashboardComponent{
 
-  constructor(public service: ServiceService, public auth: AuthService){}
+  constructor(public service: ServiceService, public auth: AuthService, private router: Router){}
 
   hidden = false;
 

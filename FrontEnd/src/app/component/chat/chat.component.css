@@ -88,11 +88,20 @@ body {
   justify-content: flex-end;
 }
 
+.message h3 {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-weight: bold;
+}
+
 .message p {
   padding: 10px;
   border-radius: 10px;
   max-width: 70%;
   word-wrap: break-word;
+  font-size: 6px;
 }
 
 .input-box {

@@ -28,42 +28,49 @@
         <h1>Contatti</h1>
       </div>
 
+  
+
       <div class="contacts" *ngFor="let contatto of contatti">
         <div class="contact">
           <!--<img src="avatar1.jpg" alt="Avatar" class="avatar">-->
           <div class="contact-info">
-            <h2>{{contatto.destinatarioId}}</h2>
-            <p>{{contatto.testo}}</p>
+            <button (click)="cambiaChat(contatto)">{{contatto.nome}}</button>
+            <!--<h2>{{contatto.nome}}</h2>-->
+            <!--<p>Are you free tomorrow?</p>-->
           </div>
         </div>
-        <!--
-        <div class="contact">
-          <img src="avatar2.jpg" alt="Avatar" class="avatar">
-          <div class="contact-info">
-            <h2>Jane Smith</h2>
-            <p>Are you free tomorrow?</p>
-          </div>
-        </div>
-        -->
       </div>
 
     </div>
     <div class="chat">
       <div class="header">
-        <h1>John Doe</h1>
+        <h1>{{contattoCorrente.nome}}</h1>
       </div>
+
+
       <div class="messages">
-        <div class="message received">
-          <p>Hey, what's up?</p>
-        </div>
-        <div class="message sent">
-          <p>Not much. Just chilling.</p>
+        <div *ngFor="let messs of chat">
+          <div class="message received"  *ngIf="messs.destinatarioId == auth.getUtenteCorrente().id">
+            <h3>{{messs.testo}}</h3>
+            <p>{{ messs.dataInvio ? messs.dataInvio : 'Adesso' }}</p>
+          
+            
+          </div>
+          <div class="message sent" *ngIf="messs.destinatarioId == contattoCorrente.id">
+            <p>{{ messs.dataInvio ? messs.dataInvio : 'Adesso' }}</p>
+            <h3>{{messs.testo}}</h3>
+            
+          </div>
         </div>
       </div>
-      <div class="input-box">
-        <input type="text" placeholder="Type a message...">
-        <button>Send</button>
-      </div>
+
+      
+      <form [formGroup]="formAggMes" (ngSubmit)="onSubmit()">
+        <div class="input-box">
+          <input type="text" placeholder="Type a message..." formControlName="nuovoMessaggio">
+          <button type="submit" >Send</button>
+        </div>
+      </form>
     </div>
   </div>
 

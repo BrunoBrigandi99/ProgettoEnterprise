@@ -52,10 +52,30 @@ export class RegistratiComponent {
     this.utente.telefono = this.formRegistrazione.value.telefono
 
     this.service.registrati(this.utente).subscribe(
-      (response) => {
+      async (response) => {
         console.log('La richiesta HTTP è stata completata con successo:', response);
-        this.auth.accedi(response);
-        this.router.navigate(['/login']);
+
+
+        let str = this.formRegistrazione.value.email+":"+this.formRegistrazione.value.password
+        let encodedStr = btoa(str);
+        (await (this.service.accedi(encodedStr))).subscribe(
+          (response) => {
+            this.service.getUtenteByEmail(this.formRegistrazione.value.email).subscribe(
+              (response) => {
+                this.auth.accedi(response)
+
+                console.log(this.auth.getUtenteCorrente())
+
+                this.router.navigate(['/profilo'])
+              }
+            )
+          }
+        )
+
+
+
+        // this.auth.accedi(response);
+        // this.router.navigate(['/login']);
       },
       (error) => {
         console.log('Si è verificato un errore durante la richiesta HTTP:', error);

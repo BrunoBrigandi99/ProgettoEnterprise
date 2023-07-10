@@ -38,3 +38,13 @@ a{
   text-decoration: none;
   color: white;
 }
+
+
+input[type="text"] {
+  width: 70%;
+  height: 30px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

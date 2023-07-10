@@ -12,7 +12,7 @@
     </button>
 
     <!--BOTTONE VENDI-->
-    <button mat-menu-item routerLink="aggiungi-annuncio" style="border-radius: 5px;">
+    <button mat-menu-item routerLink="aggiungi-annuncio" style="border-radius: 5px;" >
       Vendi
     </button>
 
@@ -34,26 +34,27 @@
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button class="Bprofilo" mat-menu-item routerLink="profilo">
+      
+      <button class="Bprofilo" mat-menu-item routerLink="profilo" *ngIf="this.auth.isAuthenticated()">
         <mat-icon>manage_accounts</mat-icon>
         <span>Profilo</span>
       </button>
-      <button class="Bprofilo" mat-menu-item routerLink="accedi" *ngIf="this.auth.isAuthenticated()">
+      <button class="Bprofilo" mat-menu-item routerLink="accedi" *ngIf="!this.auth.isAuthenticated()">
         <mat-icon>manage_accounts</mat-icon>
         <span>Accedi</span>
       </button>
-      <button class="Bprofilo" mat-menu-item routerLink="registrati" *ngIf="this.auth.isAuthenticated()">
+      <button class="Bprofilo" mat-menu-item routerLink="registrati" *ngIf="!this.auth.isAuthenticated()">
         <mat-icon>manage_accounts</mat-icon>
         <span>Registrati</span>
       </button>
-      <button class="Bprofilo" mat-menu-item routerLink="home" (click)="this.auth.esci()">
+      <button class="Bprofilo" mat-menu-item routerLink="home" (click)="this.auth.esci()" *ngIf="this.auth.isAuthenticated()">
         <mat-icon>logout</mat-icon>
         <span>Esci</span>
       </button>
     </mat-menu>
 
     <!--BOTTONE CARRELLO-->
-    <button mat-icon-button routerLink="carrello">
+    <button mat-icon-button routerLink="carrello" >
       <mat-icon>shopping_cart</mat-icon>
     </button>
 

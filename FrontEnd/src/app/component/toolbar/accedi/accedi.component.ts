@@ -24,7 +24,6 @@ export class AccediComponent {
   async onSubmit(){
 
     let str = this.formAccesso.value.email+":"+this.formAccesso.value.password
-    //let str = "Paperino@email.it:passwd";
     let encodedStr = btoa(str);
     (await (this.service.accedi(encodedStr))).subscribe(
       (response) => {

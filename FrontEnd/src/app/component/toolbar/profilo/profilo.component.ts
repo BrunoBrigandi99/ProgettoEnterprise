@@ -22,9 +22,7 @@ export class ProfiloComponent {
     this.service.getProdottiByUserId(this.auth.getUtenteCorrente().id.toString()).subscribe(pro => this.prodotti = pro)
 
     //ottengo tutte le recensioni di questo venditore
-    this.service.getRecensione(this.auth.getUtenteCorrente().id.toString()).subscribe(rec =>{ this.recensioni = rec
-    console.log(this.recensioni)
-    })
+    this.service.getRecensione(this.auth.getUtenteCorrente().id.toString()).subscribe(rec => this.recensioni = rec )
 
   }
 
