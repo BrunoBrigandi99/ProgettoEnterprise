@@ -3,22 +3,23 @@
   <!--LOGO E BARRA DI RICERCA CON BOTTONE-->
   <mat-toolbar-row>
     <button mat-button routerLink="home" style="border-radius: 5px;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"></button>
+
     <span class="spacer"></span>
-   
-    <form [formGroup]="formCerca" (ngSubmit)="onSubmit()">
+
+    <form class="ricerca" [formGroup]="formCerca" (ngSubmit)="onSubmit()">
       <mat-form-field >
         <input matInput placeholder="Cerca articoli" type="text" formControlName="cerca">
       </mat-form-field>
-      
+
       <button mat-icon-button type="submit">
         <mat-icon>search</mat-icon>
       </button>
-   
-  </form>
- 
+
+    </form>
+
 
     <!--BOTTONE VENDI-->
-    <button mat-menu-item routerLink="aggiungi-annuncio" style="border-radius: 5px;" >
+    <button class="" routerLink="aggiungi-annuncio" >
       Vendi
     </button>
 
@@ -40,7 +41,7 @@
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      
+
       <button class="Bprofilo" mat-menu-item routerLink="profilo" *ngIf="this.auth.isAuthenticated()">
         <mat-icon>manage_accounts</mat-icon>
         <span>Profilo</span>
