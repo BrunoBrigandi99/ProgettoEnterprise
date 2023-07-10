@@ -41,12 +41,19 @@ import { JsonParser, LoggingInterceptor } from './Interceptor/logging.intercepto
 
 
 
+import { CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/aggiungi-recensione.component';
+
+
+
+
 
 
 
 
 
 @NgModule({
+
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -63,6 +70,7 @@ import { JsonParser, LoggingInterceptor } from './Interceptor/logging.intercepto
     MessaggisticaComponent,
     ProfiloVenditoreComponent,
     ChatComponent,
+    AggiungiRecensioneComponent,
 
 
   ],
@@ -87,18 +95,17 @@ import { JsonParser, LoggingInterceptor } from './Interceptor/logging.intercepto
     MatGridListModule,
     MatMenuModule,
     MatSidenavModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCardModule,
+    
 
   ],
   providers: [
 
     { provide: JsonParser, useClass: LoggingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
-
-
-
-
 ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

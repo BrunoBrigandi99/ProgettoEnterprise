@@ -4,8 +4,8 @@ export class Recensione {
   id!: number;
   commento!: string;
   valutazione!: number;
-  
-  autore!: Utente;
-  utenteRecensito!: Utente;
+
+  autoreId!: number;
+  utenteRecensitoId!: number;
 
 }

@@ -22,7 +22,7 @@ export class PagAnnuncioComponent {
   formAggMes: FormGroup = new FormGroup({ nuovoMessaggio: new FormControl("") });
 
   prodotto: Prodotto = new Prodotto();    //va modificato backend, deve ricevere un prodotto e non un array di prodotti, va modificato anche service e html
-  utente: Utente = new Utente();
+  //utente: Utente = new Utente();
   recensioni: Recensione[] = [];
   altriProd: Prodotto[] = [];
   prodottoAggiunto: boolean = false;
@@ -38,7 +38,7 @@ export class PagAnnuncioComponent {
     this.service.getProdotto(id).subscribe(pro => {
       this.prodotto = pro
 
-      this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
+      //this.service.getUtente(this.prodotto.venditoreId.toString()).subscribe(ute => this.utente = ute)
 
       //ottengo tutte le recensioni di questo venditore
       this.service.getRecensione(this.prodotto.venditoreId.toString()).subscribe(rec => this.recensioni = rec)

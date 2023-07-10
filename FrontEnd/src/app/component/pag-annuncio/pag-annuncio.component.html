@@ -49,21 +49,29 @@
   </div>
 
   <!--Venditore-->
-  <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id && auth.isAuthenticated()" >
-    <!--
+  <!--
     <h1 style="font-weight: bolder;">Venditore:</h1>
     <p>{{utente.nome}} {{utente.cognome}}</p>
     <h4>Contatti:</h4>
     <p>Telefono: {{utente.telefono}}</p>
     <p>Email: {{utente.email}}</p>
-    -->
+  -->
+  <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id && auth.isAuthenticated()" >
+
     <form [formGroup]="formAggMes" (ngSubmit)="onSubmit()">
       <button type="submit">Contatta L'utente</button>
       <input type="text" placeholder="Type a message... " formControlName="nuovoMessaggio">
     </form>
-    
 
   </div>
+
+  <div class="bordo" *ngIf="!auth.isAuthenticated()" >
+    <h1 style="font-weight: bolder">Accedi per contattare l'utente</h1>
+  </div>
+
+
+
+
 
   <!--Altri prodotti del venditore-->
   <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id">
@@ -77,22 +85,21 @@
           <img src="assets/NoImage.jpg">
         </ng-template>
         <h2>{{ prodotto.nomeProdotto }}</h2>
-<!--        <p>Taglia: {{ prodotto.taglia }}</p>-->
+          <!--<p>Taglia: {{ prodotto.taglia }}</p>-->
         <p>Prezzo: {{ prodotto.prezzo }} €</p>
       </div>
     </div>
     <div class="bordo-article" *ngIf="prodotti.length === 0">
       <p>Non ci sono annunci al momento.</p>
-      <button (click)="aggiungiAnnuncio()">Aggiungi un annuncio</button>
     </div>
   </div>
 
 
   <!--Recensioni del venditore-->
   <div class="bordo" *ngIf="prodotto.venditoreId !== auth.getUtenteCorrente().id">
-    <h1 style="font-weight: bolder;">Le mie recensioni:</h1>
+    <h1 style="font-weight: bolder;">Le recensioni di questo venditore:</h1>
       <div class="bordo-article" *ngFor="let rec of recensioni" >
-          <p>{{rec.autore}}</p>
+          <p>{{rec.autoreId}}</p>
           <p>{{rec.valutazione}}</p>
           <p>{{rec.commento}}
       </div>

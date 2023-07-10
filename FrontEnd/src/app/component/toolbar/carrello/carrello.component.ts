@@ -3,6 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { Prodotto } from 'src/app/Model/Prodotto';
 import { ServiceService } from 'src/app/Service/service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Recensione } from 'src/app/Model/Recensione';
+import { AggiungiRecensioneComponent } from '../../aggiungi-recensione/aggiungi-recensione.component';
+
+
+
 
 
 
@@ -14,7 +20,7 @@ import { ServiceService } from 'src/app/Service/service.service';
 
 export class CarrelloComponent {
 
-  constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router, private auth: AuthService ) {}
+  constructor(private route: ActivatedRoute, private service: ServiceService, private router: Router, private auth: AuthService, private dialog: MatDialog ) {}
 
 
   totale: number = 0
@@ -50,6 +56,40 @@ export class CarrelloComponent {
       this.service.deleteProdotto(this.prodotti[index].id).subscribe(
         (response) => {
           this.eliminaArticolo(index)
+
+      
+
+          const aggRecensione = prompt("Vuoi scrivere una recensione sul venditore?");
+          if (aggRecensione) {
+            console.log(aggRecensione)
+
+            const dialogRef = this.dialog.open(AggiungiRecensioneComponent, {
+              width: '400px',
+              data: {
+                prodotto: this.prodotti[index]
+              }
+            });
+          
+            dialogRef.afterClosed().subscribe(result => {
+              if (result) {
+                const recensione = result.recensione;
+                const stelle = result.stelle;
+          
+                // Esegui azioni con la recensione e le stelle
+              }
+            });
+
+            let recensione: Recensione = new Recensione()
+            recensione.autoreId = this.auth.getUtenteCorrente().id
+            recensione.commento = response.toString()
+            recensione.utenteRecensitoId = this.prodotti[index].venditoreId
+            recensione.valutazione
+
+            this.service.setRecensione(recensione).subscribe()
+
+
+            this.eliminaArticolo(index)
+          }      
         }
       )
     }

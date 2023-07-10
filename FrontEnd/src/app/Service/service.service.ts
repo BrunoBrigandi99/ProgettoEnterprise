@@ -59,6 +59,10 @@ export class ServiceService {
     return this.http.get<Recensione[]>("http://localhost:8080/recensione-api/recensioni/"+ idUtente);
   }
 
+  setRecensione(recensione: Recensione){
+    return this.http.post("http://localhost:8080/recensione-api/crea-recensione/", recensione);
+  }
+
   //############################################################## UTENTE ##############################################################
 
   getUtente(idUtente: string): Observable <Utente> {
