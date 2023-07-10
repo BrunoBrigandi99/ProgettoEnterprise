@@ -50,6 +50,8 @@ export class ChatComponent {
   cambiaChat(contatto: Utente){
     this.contattoCorrente = contatto
 
+    this.chat = []
+
     this.tuttiMessaggi.forEach((messaggio) => {
       if(this.controlloMittDest(messaggio).id === this.contattoCorrente.id){ this.chat.push(messaggio) }
     })
