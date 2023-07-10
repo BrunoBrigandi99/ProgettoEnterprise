@@ -3,6 +3,7 @@
 
     <h1>ACCEDI</h1>
 
+    <!--
     <div class="input-container">
       <p class="mail">Email:</p>
       <input type="email" formControlName="email">
@@ -12,6 +13,27 @@
       <p class="pw">Password:</p>
       <input type="password" formControlName="password">
     </div>
+  -->
+
+    <div class="input-container">
+      <p class="mail">Email:</p>
+      <input type="email" formControlName="email">
+      <div *ngIf="formAccesso.controls['email'].errors && formAccesso.controls['email'].touched" class="error-message">
+        <p *ngIf="formAccesso.controls['email'].errors['required']">L'email è obbligatoria.</p>
+        <p *ngIf="formAccesso.controls['email'].errors['email']">L'email non è valida.</p>
+      </div>
+    </div>
+    
+    <div class="input-container">
+      <p class="pw">Password:</p>
+      <input type="password" formControlName="password">
+      <div *ngIf="formAccesso.controls['password'].errors && formAccesso.controls['password'].touched" class="error-message">
+        <p *ngIf="formAccesso.controls['password'].errors['required']">La password è obbligatoria.</p>
+      </div>
+    </div>
+  
+  
+    
 
     <br>
 
