@@ -23,22 +23,26 @@ export class AccediComponent {
   utente: Utente = new Utente();
 
   async onSubmit(){
-    let str = this.formAccesso.value['email'] + ":" + this.formAccesso.value['password'];
-  
-    let encodedStr = btoa(str);
-    (await (this.service.accedi(encodedStr))).subscribe(
-      (response) => {
-        this.service.getUtenteByEmail(this.formAccesso.value.email).subscribe(
-          (response) => {
-            this.auth.accedi(response)
 
-            console.log(this.auth.getUtenteCorrente())
+    if (this.formAccesso.valid) {
 
-            this.router.navigate(['/profilo'])
-          }
-        )
-      }
-    )
+      let str = this.formAccesso.value['email'] + ":" + this.formAccesso.value['password'];
+    
+      let encodedStr = btoa(str);
+      (await (this.service.accedi(encodedStr))).subscribe(
+        (response) => {
+          this.service.getUtenteByEmail(this.formAccesso.value.email).subscribe(
+            (response) => {
+              this.auth.accedi(response)
+
+              console.log(this.auth.getUtenteCorrente())
+
+              this.router.navigate(['/profilo'])
+            }
+          )
+        }
+      )
+    }
 
   }
 
