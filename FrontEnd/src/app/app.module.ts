@@ -33,14 +33,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ChatComponent } from './component/toolbar/chat/chat.component';
 import { JsonParser, LoggingInterceptor } from './Interceptor/logging.interceptor';
-
-
-import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/aggiungi-recensione.component';
-
 
 
 
@@ -64,9 +59,7 @@ import { AggiungiRecensioneComponent } from './component/aggiungi-recensione/agg
     AggiungiAnnuncioComponent,
     AccediComponent,
     RegistratiComponent,
-    ProfiloVenditoreComponent,
     ChatComponent,
-    AggiungiRecensioneComponent,
 
 
   ],

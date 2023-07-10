@@ -11,7 +11,6 @@ import { CarrelloComponent } from './component/toolbar/carrello/carrello.compone
 import { AccediComponent } from './component/toolbar/accedi/accedi.component';
 import { RegistratiComponent } from './component/toolbar/registrati/registrati.component';
 import { AggiungiAnnuncioComponent } from './component/aggiungi-annuncio/aggiungi-annuncio.component';
-import { ProfiloVenditoreComponent } from './component/profilo-venditore/profilo-venditore.component';
 import { ChatComponent } from './component/toolbar/chat/chat.component';
 
 const routes: Routes = [
@@ -33,8 +32,6 @@ const routes: Routes = [
     {path: 'chi-siamo', component: ChiSiamoComponent},
     {path: 'privacy', component: PrivacyComponent},
     {path: 'come-funziona', component: ComeFunzionaComponent},
-
-    {path: 'profilo-venditore/:id', component: ProfiloVenditoreComponent},
   ]},
 
 
